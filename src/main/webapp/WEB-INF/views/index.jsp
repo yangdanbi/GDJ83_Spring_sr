@@ -9,7 +9,13 @@
 <body>
 
 	<h1>Home</h1>
+	<div>
 	<a href="/department/list">부서목록</a>
+	</div>
+	
+	<div>
+	<a href="/location/list">지역목록</a>
+	</div>
 
 </body>
 </html>

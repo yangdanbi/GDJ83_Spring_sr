@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,38 +10,53 @@
 </head>
 <body>
 
-	<h1>부서 리스트</h1>
-	
-	<div>
+<h1>지역 리스트</h1>
+
+<div>
+
 	<table class="table table-bordered border-primary text-center">
+	
 		<thead>
-			<tr class="table-info">
-				<th>부서번호</th>
-				<th>부서명</th>
-				<th>관리자</th>
+		
+			<tr class="table-danger">
+				<td>지역 번호</td>
+				<td>지번 주소</td>
+				<td>우편 번호</td>
+				<td>도시 이름</td>
+				<td>주 이름</td>
+				<td>나라 번호</td>
 			</tr>
+		
 		</thead>
 		
 		<tbody>
 		
-			<c:forEach items="${list}" var="dto">
-				<tr>
-					<td>${dto.department_id}</td>
-					<td>${dto.department_name}</td>
-					<td>${dto.manager_id}</td>
-				</tr>		
-			</c:forEach>
+		<c:forEach items="${requestScope.list}" var ="dto">
+		
+			<tr>
+			
+				<td>${pageScope.dto.location_id}</td>
+				<td>${pageScope.dto.street_address}</td>
+				<td>${pageScope.dto.postal_code}</td>
+				<td>${pageScope.dto.city}</td>
+				<td>${pageScope.dto.state_province}</td>
+				<td>${pageScope.dto.country_id}</td>
+			
+			</tr>
+		
+		
+		
+		</c:forEach>
 		
 		
 		</tbody>
 	
-	
-	
 	</table>
-	</div>
-	
+
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
 </body>
 </html>
