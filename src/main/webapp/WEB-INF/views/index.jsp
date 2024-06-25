@@ -16,6 +16,10 @@
 	<div>
 	<a href="/location/list">지역목록</a>
 	</div>
+	
+	<div>
+	<a href="/employee/list">사원목록</a>
+	</div>
 
 </body>
 </html>

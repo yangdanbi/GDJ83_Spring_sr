@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h1>지역 리스트</h1>
+<h1>사원 리스트</h1>
 
 <div>
 
@@ -18,13 +18,11 @@
 	
 		<thead>
 		
-			<tr class="table-danger">
-				<th>지역 번호</th>
-				<th>지번 주소</th>
-				<th>우편 번호</th>
-				<th>도시 이름</th>
-				<th>주 이름</th>
-				<th>나라 번호</th>
+			<tr class="table-success">
+				<th>사번</th>
+				<th>이름</th>
+				<th>성</th>
+				<th>업무 코드</th>
 			</tr>
 		
 		</thead>
@@ -35,12 +33,10 @@
 		
 			<tr>
 			
-				<td>${pageScope.dto.location_id}</td>
-				<td>${pageScope.dto.street_address}</td>
-				<td>${pageScope.dto.postal_code}</td>
-				<td>${pageScope.dto.city}</td>
-				<td>${pageScope.dto.state_province}</td>
-				<td>${pageScope.dto.country_id}</td>
+				<td>${pageScope.dto.employee_id}</td>
+				<td>${pageScope.dto.first_name}</td>
+				<td>${pageScope.dto.last_name}</td>
+				<td>${pageScope.dto.job_id}</td>
 			
 			</tr>
 		
