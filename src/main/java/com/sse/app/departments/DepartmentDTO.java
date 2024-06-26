@@ -6,7 +6,7 @@ public class DepartmentDTO {
 	private Integer department_id;
 	private String department_name;
 	private Long manager_id;
-	private Integer locateion_id;
+	private Integer location_id;
 
 	public Integer getDepartment_id() {
 		return department_id;
@@ -32,12 +32,12 @@ public class DepartmentDTO {
 		this.manager_id = manager_id;
 	}
 
-	public Integer getLocateion_id() {
-		return locateion_id;
+	public Integer getLocation_id() {
+		return location_id;
 	}
 
-	public void setLocateion_id(Integer locateion_id) {
-		this.locateion_id = locateion_id;
+	public void setLocation_id(Integer location_id) {
+		this.location_id = location_id;
 	}
 
 }

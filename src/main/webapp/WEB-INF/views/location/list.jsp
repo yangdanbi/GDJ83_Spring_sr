@@ -36,7 +36,7 @@
 			<tr>
 			
 				<td>${pageScope.dto.location_id}</td>
-				<td>${pageScope.dto.street_address}</td>
+				<td><a href="./detail?location_id=${pageScope.dto.location_id}">${pageScope.dto.street_address}</a></td>
 				<td>${pageScope.dto.postal_code}</td>
 				<td>${pageScope.dto.city}</td>
 				<td>${pageScope.dto.state_province}</td>
@@ -52,6 +52,12 @@
 		</tbody>
 	
 	</table>
+	
+			<div>
+		
+			<a class="btn btn-danger" href="./add" role="button">지역등록</a>
+		
+		</div>
 
 </div>
 
