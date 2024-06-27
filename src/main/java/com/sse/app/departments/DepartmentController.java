@@ -1,6 +1,7 @@
 package com.sse.app.departments;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,9 @@ public class DepartmentController {
 
 //		2.Model을 매개변수로 받기 (얘는 리턴 따로 안해도 됨)
 		model.addAttribute("list", ar);
+
+		List<Map<String, Object>> list = departmentService.getInfo();
+		model.addAttribute("info", list);
 
 	}
 

@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -140,6 +142,35 @@ public class DepartmentDAO {
 		con.close();
 
 		return result;
+	}
+
+	public List<Map<String, Object>> getInfo() throws Exception {
+
+		Connection con = dbconnection.getConnection();
+		String sql = "SELECT DEPARTMENT_ID,SUM(SALARY),AVG(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet result = st.executeQuery();
+		List<Map<String, Object>> ar = new ArrayList<Map<String, Object>>();
+
+		while (result.next()) {
+
+			int id = result.getInt("DEPARTMENT_ID");
+			int sum = result.getInt(2);
+			double avg = result.getDouble(3);
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", id);
+			map.put("sum", sum);
+			map.put("avg", avg);
+
+			ar.add(map);
+		}
+
+		result.close();
+		st.close();
+		con.close();
+
+		return ar;
 	}
 
 }
