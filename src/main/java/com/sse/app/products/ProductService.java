@@ -17,9 +17,15 @@ public class ProductService {
 
 	}
 
-	public ProductDTO getDetail(int num) throws Exception {
+	public ProductDTO getDetail(ProductDTO productDTO) throws Exception {
 
-		return productDAO.getDeatil(num);
+		return productDAO.getDeatil(productDTO);
+
+	}
+
+	public int addInfo(ProductDTO productDTO) throws Exception {
+
+		return productDAO.addInfo(productDTO);
 
 	}
 

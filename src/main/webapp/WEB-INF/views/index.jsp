@@ -42,6 +42,6 @@
 	</div>
 
 
-	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
+<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>
 </html>

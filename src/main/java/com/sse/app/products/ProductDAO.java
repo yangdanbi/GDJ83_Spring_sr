@@ -47,18 +47,16 @@ public class ProductDAO {
 
 	}
 
-	public ProductDTO getDeatil(int num) throws Exception {
-
-		List<ProductDTO> arr = new List<ProductDTO>();
+	public ProductDTO getDeatil(ProductDTO productDTO) throws Exception {
 
 		Connection con = dbconnection.getConnection();
 		String sql = "SELECT * FROM ITEMS WHERE ITEM_ID = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 
-		ps.setInt(1, num);
+		ps.setInt(1, productDTO.getItem_id());
 
 		ResultSet rs = ps.executeQuery();
-		ProductDTO productDTO = null;
+		productDTO = null;
 
 		if (rs.next()) {
 
@@ -71,8 +69,27 @@ public class ProductDAO {
 
 		}
 
+		rs.close();
+		ps.close();
+		con.close();
+
 		return productDTO;
 
+	}
+
+	public int addInfo(ProductDTO productDTO) throws Exception {
+
+		Connection con = dbconnection.getConnection();
+		String sql = "INSERT INTO ITEMS VALUES (ITEMS_SEQ.NEXTVAL, ?,?,?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+
+		ps.setString(1, productDTO.getItem_name());
+		ps.setString(2, productDTO.getItem_detail());
+		ps.setDouble(3, productDTO.getItem_rate());
+
+		int num = ps.executeUpdate();
+
+		return num;
 	}
 
 }

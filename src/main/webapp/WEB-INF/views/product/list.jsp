@@ -43,6 +43,14 @@
 </div>
 
 
+<div>
+
+	<a href="/product/add"><button>상품 추가</button></a>
+
+</div>
+
+
+
 
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>

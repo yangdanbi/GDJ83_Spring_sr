@@ -26,13 +26,35 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public void getDetail(Model model, int item_id) throws Exception {
+	public void getDetail(Model model, ProductDTO productDTO) throws Exception {
 
 		System.out.println("detail");
 
-		ProductDTO productDTO = productService.getDetail(item_id);
+		productDTO = productService.getDetail(productDTO);
 		model.addAttribute("dto", productDTO);
 
+	}
+
+	@RequestMapping(value = "add", method = RequestMethod.GET)
+	public void addInfo() {
+		System.out.println("add페이지 도착");
+
+	}
+
+	@RequestMapping(value = "add", method = RequestMethod.POST)
+	public String addInfo2(Model model, ProductDTO productDTO) throws Exception {
+		System.out.println("제출");
+
+		int num = productService.addInfo(productDTO);
+		String url = "";
+
+		if (num > 0) {
+
+			url = "redirect:./list";
+
+		}
+
+		return url;
 	}
 
 }
