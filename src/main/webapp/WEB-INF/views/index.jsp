@@ -12,7 +12,7 @@
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
 	<div class="container mt-5">
-		<div class="row">
+		<div class="row col-md-6">
 			<div id="carouselExampleFade" class="carousel slide carousel-fade">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
