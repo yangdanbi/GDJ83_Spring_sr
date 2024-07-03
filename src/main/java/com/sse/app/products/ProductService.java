@@ -29,4 +29,14 @@ public class ProductService {
 
 	}
 
+	public int deleteInfo(ProductDTO productDTO) {
+		return productDAO.deleteInfo(productDTO);
+	}
+
+	public int updateInfo(ProductDTO productDTO) {
+
+		return productDAO.updateInfo(productDTO);
+
+	}
+
 }

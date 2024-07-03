@@ -47,6 +47,20 @@
 
 </div>
 
+
+<div>
+
+	<a href="./delete?item_id=${dto.item_id}"><button>삭제하기</button></a>
+	
+</div>
+
+<div>
+
+	<a href="./update?item_id=${dto.item_id}"><button>수정하기</button></a>
+	
+</div>
+
+
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>
 </html>

@@ -57,4 +57,40 @@ public class ProductController {
 		return url;
 	}
 
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String deleteInfo(Model model, ProductDTO productDTO) {
+		System.out.println("삭제");
+
+		int num = productService.deleteInfo(productDTO);
+		String url = "";
+
+		if (num > 0) {
+			url = "redirect:./list";
+		}
+
+		return url;
+
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void updateInfo(Model model, ProductDTO productDTO) throws Exception {
+		System.out.println("수정");
+
+		productDTO = productService.getDetail(productDTO);
+		model.addAttribute("dto", productDTO);
+
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateInfo2(Model model, ProductDTO productDTO) {
+
+		int num = productService.updateInfo(productDTO);
+		String url = "";
+
+		if (num > 0) {
+			url = "redirect:/product/list";
+		}
+		return url;
+	}
+
 }

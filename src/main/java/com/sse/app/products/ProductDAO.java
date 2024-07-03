@@ -1,95 +1,45 @@
 package com.sse.app.products;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.sse.app.util.DBConnection;
 
 @Repository
 public class ProductDAO {
 
 	@Autowired
-	private DBConnection dbconnection;
+	private SqlSession sqlSession;
+
+	private final String NAMESPACE = "com.sse.app.products.ProductDAO.";
 
 	public List<ProductDTO> getList() throws Exception {
 
-		Connection con = dbconnection.getConnection();
-		String sql = "SELECT * FROM ITEMS ORDER BY ITEM_ID ASC";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-
-		ArrayList<ProductDTO> ar = new ArrayList<ProductDTO>();
-
-		while (rs.next()) {
-
-			ProductDTO productDTO = new ProductDTO();
-
-			productDTO.setItem_id(rs.getInt("ITEM_ID"));
-			productDTO.setItem_name(rs.getString("ITEM_NAME"));
-			productDTO.setItem_detail(rs.getString("ITEM_DETAIL"));
-			productDTO.setItem_rate(rs.getDouble("ITEM_RATE"));
-
-			ar.add(productDTO);
-
-		}
-
-		rs.close();
-		ps.close();
-		con.close();
-
-		return ar;
+		return sqlSession.selectList(NAMESPACE + "getList");
 
 	}
 
 	public ProductDTO getDeatil(ProductDTO productDTO) throws Exception {
 
-		Connection con = dbconnection.getConnection();
-		String sql = "SELECT * FROM ITEMS WHERE ITEM_ID = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
-
-		ps.setInt(1, productDTO.getItem_id());
-
-		ResultSet rs = ps.executeQuery();
-		productDTO = null;
-
-		if (rs.next()) {
-
-			productDTO = new ProductDTO();
-
-			productDTO.setItem_id(rs.getInt("ITEM_ID"));
-			productDTO.setItem_name(rs.getString("ITEM_NAME"));
-			productDTO.setItem_detail(rs.getString("ITEM_DETAIL"));
-			productDTO.setItem_rate(rs.getDouble("ITEM_RATE"));
-
-		}
-
-		rs.close();
-		ps.close();
-		con.close();
-
-		return productDTO;
+		return sqlSession.selectOne(NAMESPACE + "getDetail", productDTO);
 
 	}
 
 	public int addInfo(ProductDTO productDTO) throws Exception {
 
-		Connection con = dbconnection.getConnection();
-		String sql = "INSERT INTO ITEMS VALUES (ITEMS_SEQ.NEXTVAL, ?,?,?)";
-		PreparedStatement ps = con.prepareStatement(sql);
+		return sqlSession.insert(NAMESPACE + "addInfo", productDTO);
+	}
 
-		ps.setString(1, productDTO.getItem_name());
-		ps.setString(2, productDTO.getItem_detail());
-		ps.setDouble(3, productDTO.getItem_rate());
+	public int deleteInfo(ProductDTO productDTO) {
 
-		int num = ps.executeUpdate();
+		return sqlSession.delete(NAMESPACE + "deleteInfo", productDTO);
+	}
 
-		return num;
+	public int updateInfo(ProductDTO productDTO) {
+
+		return sqlSession.update(NAMESPACE + "updateInfo", productDTO);
+
 	}
 
 }
