@@ -16,6 +16,7 @@
 </div>
 
 <form action="/product/update" method="post">
+<input type="hidden" name = "item_id" value="${dto.item_id}">
 <div>
 <div class="mb-3">
   <label for="formGroupExampleInput" class="form-label">상품명</label>
