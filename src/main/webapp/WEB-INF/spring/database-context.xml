@@ -15,10 +15,11 @@
 		<property name="driverClassName" value="${oracle.driver}"></property>
 	</bean>
 
-<!--db와 연결하는 클래스와 sql을 작성하는 mapper xml의 위치를 알려주는 클래스  -->
+<!--db와 연결하는 클래스와 sql을 작성하는 mapper와 config xml의 위치를 알려주는 클래스  -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 			<property name="dataSource" ref="dataSource"></property>
 			<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property>
+			<property name="configLocation" value="classpath:database/config/mybatis-config.xml"></property>
 	</bean>	
 	
 <!-- db와 mapper의 위치를 알고 있는 클래스  -->

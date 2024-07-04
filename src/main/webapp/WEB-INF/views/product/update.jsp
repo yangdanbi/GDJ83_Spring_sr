@@ -9,7 +9,9 @@
 <c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
 </head>
 <body>
-	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
+
+		<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
+
 
 <div class ="text-center">
 <h1>상품 수정 정보 입력</h1>

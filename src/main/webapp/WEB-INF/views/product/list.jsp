@@ -9,7 +9,9 @@
 <c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
 </head>
 <body>
-<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
+
+		<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
+
 
 <div class ="container mt-5 justify-content-center text-center">
 

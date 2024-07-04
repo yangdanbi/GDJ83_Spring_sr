@@ -6,21 +6,21 @@
    <mapper namespace="com.sse.app.products.ProductDAO">
    
 <!--리스트 가져오기  -->
-   <select id="getList" resultType="com.sse.app.products.ProductDTO">
+   <select id="getList" resultType="ProductDTO">
    
   	 SELECT * FROM ITEMS ORDER BY ITEM_ID ASC
    
    </select>
 
 <!--디테일 가져오기  -->
-   	<select id="getDetail" resultType="com.sse.app.products.ProductDTO" parameterType="com.sse.app.products.ProductDTO">
+   	<select id="getDetail" resultType="ProductDTO" parameterType="ProductDTO">
    	
    		SELECT * FROM ITEMS WHERE ITEM_ID= #{item_id}
    	
    	</select>
  
  <!--새상품 추가하기  -->  	
-   	<insert id="addInfo" parameterType="com.sse.app.products.ProductDTO">
+   	<insert id="addInfo" parameterType="ProductDTO">
    	
    		INSERT INTO ITEMS VALUES (ITEMS_SEQ.NEXTVAL, #{item_name},#{item_detail},#{item_rate})
    	
@@ -28,7 +28,7 @@
    	
 <!-- 특정상품 하나 삭제하기 -->
 
-	<delete id="deleteInfo" parameterType="com.sse.app.products.ProductDTO">
+	<delete id="deleteInfo" parameterType="ProductDTO">
 	
 		DELETE ITEMS WHERE ITEM_ID=#{item_id}
 	
@@ -36,7 +36,7 @@
 	
 <!-- 특정상품 하나 수정하기  -->
 
-	<update id="updateInfo" parameterType="com.sse.app.products.ProductDTO">
+	<update id="updateInfo" parameterType="ProductDTO">
 	
 	UPDATE ITEMS SET ITEM_NAME=#{item_name}, ITEM_DETAIL =#{item_detail},ITEM_RATE =#{item_rate} WHERE ITEM_ID=#{item_id}
 	
