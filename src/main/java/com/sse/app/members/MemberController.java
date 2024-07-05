@@ -89,10 +89,55 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session) throws Exception {
 
 		session.invalidate();
+//		위랑 동일한 효과
+//		session.setAttribute("member", null);
+//		session.removeAttribute("member");
 		return "redirect:/";
+	}
+
+	@RequestMapping(value = "mypage", method = RequestMethod.GET)
+	public void mypage() throws Exception {
+
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update() throws Exception {
+
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(MemberDTO memberDTO, Model model, HttpSession session) throws Exception {
+
+		MemberDTO user = (MemberDTO) session.getAttribute("member");
+		memberDTO.setMember_id(user.getMember_id());
+
+		memberDTO = memberService.update(memberDTO);
+
+		session.setAttribute("member", memberDTO);
+
+		model.addAttribute("result", "수정완료");
+		model.addAttribute("url", "/member/mypage");
+		return "/commons/message";
+
+	}
+
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String delete(HttpSession session, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		int num = memberService.delete(memberDTO);
+
+		if (num > 0) {
+
+			session.invalidate();
+			model.addAttribute("result", "탈퇴완료");
+			model.addAttribute("url", "/");
+		}
+
+		return "/commons/message";
+
 	}
 
 }

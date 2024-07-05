@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias type="com.sse.app.products.ProductDTO" alias="ProductDTO"/>
 		<typeAlias type="com.sse.app.members.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.sse.app.accounts.AccountDTO" alias="AccountDTO"/>
 	</typeAliases>
 
 </configuration>

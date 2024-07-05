@@ -61,6 +61,12 @@
 	
 </div>
 
+<div>
+
+	<a href="/account/add?item_id=${dto.item_id}"><button>상품가입</button></a>
+	
+</div>
+
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>

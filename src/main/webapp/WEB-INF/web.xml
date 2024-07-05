@@ -32,4 +32,22 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>LoginFilter</display-name>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.sse.app.Filters.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/member/mypage</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/member/update</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/member/delete</url-pattern>
+  </filter-mapping>
+
 </web-app>

@@ -27,4 +27,20 @@ public class MemberService {
 		}
 		return result;
 	}
+
+	public MemberDTO update(MemberDTO memberDTO) throws Exception {
+
+		int num = memberDAO.update(memberDTO);
+
+		if (num > 0) {
+			memberDAO.login(memberDTO);
+		}
+		return memberDTO;
+	}
+
+	public int delete(MemberDTO memberDTO) throws Exception {
+		return memberDAO.delete(memberDTO);
+
+	}
+
 }
