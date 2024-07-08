@@ -29,7 +29,6 @@
 		DELETE MEMBERS WHERE MEMBER_ID=#{member_id}
 	
 	</delete>
+	
    
-
-  
    </mapper>

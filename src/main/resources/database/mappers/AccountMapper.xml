@@ -3,15 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-   <mapper namespace="com.sse.app.accounts.AccountDAO>
+   <mapper namespace="com.sse.app.accounts.AccountDAO">
    
-   
-   	<insert id="addInfo" parameterType="ProductDTO">
+   	<insert id="add" parameterType="AccountDTO">
    	
-   		INSERT INTO BANK (BANK_ID,MEMBER_ID,ITEM_ID,BANK_PW) VALUES (BANK_SEQ.NEXTVAL,'ksr3234','1','9999')
+   		INSERT INTO BANK (BANK_ID,MEMBER_ID,ITEM_ID,BANK_PW) VALUES(#{bank_id},#{member_id},#{item_id},#{bank_pw})
    	
    	</insert>
-   
-   
+   	
+   	<select id="list" parameterType="MemberDTO" resultType="AccountDTO">
+		SELECT BANK_ID, BALANCE FROM BANK WHERE MEMBER_ID=#{member_id}
+	</select>
    
    </mapper>

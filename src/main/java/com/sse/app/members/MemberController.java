@@ -1,5 +1,7 @@
 package com.sse.app.members;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -69,12 +71,12 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 
-		memberDTO = memberService.login(memberDTO);
+		Map<String, Object> map = memberService.login(memberDTO);
 		String url = "/commons/message";
 
-		if (memberDTO != null) {
+		if (map != null) {
 
-			session.setAttribute("member", memberDTO);
+			session.setAttribute("member", map);
 
 			model.addAttribute("result", "로그인 성공");
 			model.addAttribute("url", "/");
@@ -99,7 +101,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)
-	public void mypage() throws Exception {
+	public void mypage(Model model, HttpSession session) throws Exception {
 
 	}
 
