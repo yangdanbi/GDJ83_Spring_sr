@@ -48,4 +48,8 @@ public class MemberService {
 
 	}
 
+	public MemberDTO detail(MemberDTO memberDTO) throws Exception {
+		return memberDAO.detail(memberDTO);
+	}
+
 }

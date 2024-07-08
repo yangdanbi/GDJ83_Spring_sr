@@ -11,8 +11,38 @@
    	
    	</insert>
    	
-   	<select id="list" parameterType="MemberDTO" resultType="AccountDTO">
-		SELECT BANK_ID, BALANCE FROM BANK WHERE MEMBER_ID=#{member_id}
+
+	<select id="detail" parameterType="AccountDTO" resultMap="detailResult">
+	
+		SELECT *
+			FROM BANK B
+			INNER JOIN
+			ITEMS I
+		ON B.ITEM_ID =I.ITEM_ID
+		WHERE B.BANK_ID=#{bank_id}
+	
 	</select>
+	
+	<resultMap type="AccountDTO" id="detailResult">
+		<id column="BANK_ID" property="bank_id"/>
+		<result column="MEMBER_ID" property="member_id"/>
+		<result column="ITEM_ID" property="item_id"/>
+		<result column="OPEN_DATE" property="open_date"/>
+		<result column="BANK_PW" property="bank_pw"/>
+		<result column="BALANCE" property="balance"/>
+		
+		<association property="productDTO" javaType="ProductDTO">
+			<result column="ITEM_NAME" property="item_name"/>
+			<result column="ITEM_DETAIL" property="item_detail"/>
+			<result column="ITEM_RATE" property="item_rate"/>
+		</association>
+		
+		
+	</resultMap>
+	
+	
+	
+	
+
    
    </mapper>

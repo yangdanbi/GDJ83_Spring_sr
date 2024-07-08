@@ -32,4 +32,8 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE + "delete", memberDTO);
 	}
 
+	public MemberDTO detail(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "detail", memberDTO);
+	}
+
 }

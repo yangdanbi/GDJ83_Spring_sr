@@ -1,5 +1,8 @@
 package com.sse.app.accounts;
 
+import com.sse.app.members.MemberDTO;
+import com.sse.app.products.ProductDTO;
+
 public class AccountDTO {
 
 	private String bank_id;
@@ -8,6 +11,24 @@ public class AccountDTO {
 	private String open_date;
 	private String bank_pw;
 	private Integer balance;
+	private MemberDTO memberDTO;
+	private ProductDTO productDTO;
+
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
+
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
+	}
 
 	public String getBank_id() {
 		return bank_id;

@@ -11,15 +11,19 @@
    	
    	</insert>
    
-   <select id="login" parameterType="MemberDTO" resultMap="loginResult">
+   <select id="login" parameterType="MemberDTO" resultType="MemberDTO">
    	
+   	SELECT MEMBER_ID,MEMBER_PW,MEMBER_NAME FROM MEMBERS WHERE MEMBER_ID = #{member_id}
+   
+   </select>
+   
+   <select id="detail" parameterType="MemberDTO" resultMap="loginResult">
    	SELECT m.*, b.*
-	FROM MEMBERS m
+	FROM MEMBERS m 
 		 LEFT OUTER JOIN
 		 BANK b
-	ON m.MEMBER_ID =b.MEMBER_ID
+		 ON m.MEMBER_ID =b.MEMBER_ID
 	WHERE m.MEMBER_ID = #{member_id}
-   
    </select>
    
    <resultMap type="MemberDTO" id="loginResult">

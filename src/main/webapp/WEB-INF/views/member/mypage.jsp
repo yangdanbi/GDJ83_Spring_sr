@@ -43,7 +43,7 @@
   	<h3>내가 가입한 상품</h3>
   	
   	<c:forEach items="${member.dtos}" var="ac">
-  	<h3>계좌번호 : ${ac.bank_id}</h3>
+  	<a href="../account/detail?bank_id=${ac.bank_id}"><h3>계좌번호 : ${ac.bank_id}</h3></a>
   	<h3>잔액 : ${ac.balance}</h3>	
   	</c:forEach>
   </div>

@@ -26,4 +26,9 @@ public class AccountService {
 
 	}
 
+	public AccountDTO detail(AccountDTO accountDTO) throws Exception {
+
+		return accountDAO.detail(accountDTO);
+	}
+
 }

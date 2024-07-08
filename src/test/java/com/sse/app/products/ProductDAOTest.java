@@ -34,4 +34,8 @@ public class ProductDAOTest extends DefaultTest {
 
 	}
 
+	public void accountInfoTest() throws Exception {
+
+	}
+
 }

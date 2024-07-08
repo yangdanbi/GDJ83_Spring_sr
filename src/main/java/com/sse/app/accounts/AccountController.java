@@ -41,4 +41,14 @@ public class AccountController {
 		return "/commons/message";
 	}
 
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	public void detail(AccountDTO accountDTO, Model model) throws Exception {
+		AccountDTO adto = new AccountDTO();
+		adto.setBank_id(accountDTO.getBank_id());
+		adto = accountService.detail(adto);
+
+		model.addAttribute("acinfo", adto);
+
+	}
+
 }
