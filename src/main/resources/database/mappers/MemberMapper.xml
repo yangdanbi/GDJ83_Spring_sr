@@ -11,13 +11,35 @@
    	
    	</insert>
    
-   <select id="login" parameterType="MemberDTO" resultType="MemberDTO">
+   <select id="login" parameterType="MemberDTO" resultMap="loginResult">
    	
-   		SELECT * FROM MEMBERS WHERE MEMBER_ID=#{member_id}
+   	SELECT m.*, b.*
+	FROM MEMBERS m
+		 LEFT OUTER JOIN
+		 BANK b
+	ON m.MEMBER_ID =b.MEMBER_ID
+	WHERE m.MEMBER_ID = #{member_id}
    
    </select>
    
+   <resultMap type="MemberDTO" id="loginResult">
+   		<id column="MEMBER_ID" property="member_id"/>
+   		<result column="MEMBER_PW" property="member_pw"/>
+   		<result column="MEMBER_NAME" property="member_name"/>
+   		<result column="MEMBER_PHONE" property="member_phone"/>
+   		<result column="MEMBER_MAIL" property="member_mail"/>
+   		<collection property="dtos" javaType="java.util.List" ofType="AccountDTO">
+   			<id column="BANK_ID" property="bank_id"/>
+   			<result column="ITEM_ID" property="item_id"/>
+   			<result column="OPEN_DATE" property="open_date"/>
+   			<result column="BANK_PW" property="bank_pw"/>
+   			<result column="BALANCE" property="balance"/>
+   		</collection>
    
+   
+   </resultMap>
+   
+      
    <update id="update" parameterType="MemberDTO">
    
    		UPDATE MEMBERS SET MEMBER_NAME =#{member_name},MEMBER_PHONE =#{member_phone}, MEMBER_MAIL =#{member_mail} WHERE MEMBER_ID =#{member_id}

@@ -1,5 +1,9 @@
 package com.sse.app.members;
 
+import java.util.List;
+
+import com.sse.app.accounts.AccountDTO;
+
 public class MemberDTO {
 
 	private String member_id;
@@ -7,6 +11,15 @@ public class MemberDTO {
 	private String member_name;
 	private String member_phone;
 	private String member_mail;
+	private List<AccountDTO> dtos;
+
+	public List<AccountDTO> getDtos() {
+		return dtos;
+	}
+
+	public void setDtos(List<AccountDTO> dtos) {
+		this.dtos = dtos;
+	}
 
 	public String getMember_id() {
 		return member_id;

@@ -17,7 +17,7 @@
 		
 		<c:if test="${not empty member}">
 		<div>
-			<h3>${member.member.member_name}님 환영합니다</h3>
+			<h3>${member.member_name}님 환영합니다</h3>
 		</div>
 		</c:if>
 		

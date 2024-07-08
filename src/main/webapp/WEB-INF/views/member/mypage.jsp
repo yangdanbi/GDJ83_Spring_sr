@@ -20,19 +20,19 @@
 
   <div class="col-12">
     <label for="inputID" class="form-label">ID</label>
-    <input type="text" class="form-control" id="inputEmail" name="member_id" value="${member.member.member_id}" readonly>
+    <input type="text" class="form-control" id="inputEmail" name="member_id" value="${member.member_id}" readonly>
   </div>
    <div class="col-12">
     <label for="inputName" class="form-label">이름</label>
-    <input type="text" class="form-control" id="inputName" name="member_name" value="${member.member.member_name}" readonly>
+    <input type="text" class="form-control" id="inputName" name="member_name" value="${member.member_name}" readonly>
   </div>
    <div class="col-12">
     <label for="inputPhone" class="form-label">전화번호</label>
-    <input type="text" class="form-control" id="inputPhone" name="member_phone" value="${member.member.member_phone}" readonly>
+    <input type="text" class="form-control" id="inputPhone" name="member_phone" value="${member.member_phone}" readonly>
   </div>
   <div class="col-12">
     <label for="inputMail" class="form-label">E-mail</label>
-    <input type="text" class="form-control" id="inputMail" name="member_mail" value="${member.member.member_mail}" readonly>
+    <input type="text" class="form-control" id="inputMail" name="member_mail" value="${member.member_mail}" readonly>
   </div>
   
   <div class="col-12">
@@ -42,7 +42,7 @@
   <div>
   	<h3>내가 가입한 상품</h3>
   	
-  	<c:forEach items="${member.accounts}" var="ac">
+  	<c:forEach items="${member.dtos}" var="ac">
   	<h3>계좌번호 : ${ac.bank_id}</h3>
   	<h3>잔액 : ${ac.balance}</h3>	
   	</c:forEach>

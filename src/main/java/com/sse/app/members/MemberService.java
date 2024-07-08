@@ -1,14 +1,9 @@
 package com.sse.app.members;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sse.app.accounts.AccountDAO;
-import com.sse.app.accounts.AccountDTO;
 
 @Service
 public class MemberService {
@@ -24,16 +19,13 @@ public class MemberService {
 
 	}
 
-	public Map<String, Object> login(MemberDTO memberDTO) throws Exception {
+	public MemberDTO login(MemberDTO memberDTO) throws Exception {
 
-		Map<String, Object> map = new HashMap<String, Object>();
 		MemberDTO result = memberDAO.login(memberDTO);
 		if (result != null) {
 			if (result.getMember_pw().equals(memberDTO.getMember_pw())) {
-				List<AccountDTO> ar = accountDAO.list(memberDTO);
-				map.put("member", result);
-				map.put("accounts", ar);
-				return map;
+
+				return result;
 			} else {
 				return null;
 			}
