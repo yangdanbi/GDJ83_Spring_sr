@@ -51,4 +51,31 @@ public class AccountController {
 
 	}
 
+	@RequestMapping(value = "transfer", method = RequestMethod.GET)
+	public void transfer(AccountInfoDTO accountInfoDTO, Model model) throws Exception {
+		model.addAttribute("balance", accountInfoDTO);
+	}
+
+	@RequestMapping(value = "transfer", method = RequestMethod.POST)
+	public String transfer2(AccountInfoDTO accountInfoDTO, Model model) throws Exception {
+		int num = accountService.transfer(accountInfoDTO);
+
+		if (num == 4) {
+			model.addAttribute("result", "이체를 완료했습니다");
+			model.addAttribute("url", "/");
+			return "/commons/message";
+		} else if (num == 0) {
+
+			model.addAttribute("result", "비밀번호가 일치하지 않습니다");
+			model.addAttribute("url", "/member/mypage");
+			return "/commons/message";
+		} else {
+
+			model.addAttribute("result", "이체에 실패했습니다 이체 정보를 정확히 입력하세요");
+			model.addAttribute("url", "/member/mypage");
+			return "/commons/message";
+		}
+
+	}
+
 }

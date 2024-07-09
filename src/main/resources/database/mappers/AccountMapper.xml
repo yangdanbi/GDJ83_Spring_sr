@@ -40,9 +40,27 @@
 		
 	</resultMap>
 	
-	
-	
-	
 
-   
+	<insert id="transfer" parameterType="AccountInfoDTO">
+		INSERT INTO BANK_INFOS (BANK_ID,RESULTBALANCE,DIFFERENCE,ACCOUNT_U) VALUES(#{bank_id},#{balance}-#{difference},'-'||#{difference},#{account_u})
+	</insert>
+	
+	<update id="resultyou" parameterType="AccountInfoDTO">
+		UPDATE BANK SET BALANCE =BALANCE + #{difference} WHERE BANK_ID =#{account_u}
+	</update>
+	
+	<update id="resultmy" parameterType="AccountInfoDTO">
+		UPDATE BANK SET BALANCE =BALANCE - #{difference} WHERE BANK_ID =#{bank_id}
+	</update>
+	
+	<insert id="transfer2" parameterType="AccountInfoDTO">
+		INSERT INTO BANK_INFOS (BANK_ID,RESULTBALANCE,DIFFERENCE,ACCOUNT_U) VALUES(#{account_u},(SELECT BALANCE FROM BANK WHERE BANK_ID=#{account_u})
+		,'+'||#{difference},#{bank_id})
+	</insert>
+	
+	<select id="password" parameterType="AccountInfoDTO" resultType="AccountInfoDTO">
+		SELECT BANK_PW FROM BANK WHERE BANK_ID=#{bank_id}
+	</select>
+
+ 
    </mapper>

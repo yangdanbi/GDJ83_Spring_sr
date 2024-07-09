@@ -1,5 +1,6 @@
 package com.sse.app.accounts;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -12,15 +13,25 @@ public class AccountDAOTest extends DefaultTest {
 	@Autowired
 	private AccountDAO accountDAO;
 
-	@Test
 	public void detail() {
 		AccountDTO accountDTO = new AccountDTO();
 		accountDTO.setBank_id("1720399639825");
-		accountDAO.detail(accountDTO);
 		accountDTO.getProductDTO();
 
 		assertNotNull(accountDTO.getProductDTO());
 
+	}
+
+	@Test
+	public void password() throws Exception {
+		AccountInfoDTO accountInfoDTO = new AccountInfoDTO();
+		accountInfoDTO.setAccount_u("7777");
+		accountInfoDTO.setBalance(10000);
+		accountInfoDTO.setBank_id("4444");
+		accountInfoDTO.setDifference(1000);
+		int num = accountDAO.transfer(accountInfoDTO);
+
+		assertEquals(num, 1);
 	}
 
 }

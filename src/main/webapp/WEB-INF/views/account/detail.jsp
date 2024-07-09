@@ -20,7 +20,9 @@
 <h3>이자율 : ${acinfo.productDTO.item_rate}</h3>
 <h3>잔액 : ${acinfo.balance}</h3>
 
-
+<div>
+<a href="./transfer?bank_id=${acinfo.bank_id}&balance=${acinfo.balance}">이체</a>
+</div>
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>
