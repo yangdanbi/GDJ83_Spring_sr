@@ -3,6 +3,8 @@ package com.sse.app.accounts;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +24,6 @@ public class AccountDAOTest extends DefaultTest {
 
 	}
 
-	@Test
 	public void password() throws Exception {
 		AccountInfoDTO accountInfoDTO = new AccountInfoDTO();
 		accountInfoDTO.setAccount_u("7777");
@@ -32,6 +33,16 @@ public class AccountDAOTest extends DefaultTest {
 		int num = accountDAO.transfer(accountInfoDTO);
 
 		assertEquals(num, 1);
+	}
+
+	@Test
+	public void list() throws Exception {
+		AccountInfoDTO accountInfoDTO = new AccountInfoDTO();
+		accountInfoDTO.setBank_id("1720509649290");
+
+		List<AccountInfoDTO> ar = accountDAO.list(accountInfoDTO);
+
+		assertNotNull(ar);
 	}
 
 }

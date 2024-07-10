@@ -1,5 +1,7 @@
 package com.sse.app.accounts;
 
+import java.sql.Date;
+
 public class AccountInfoDTO {
 
 	private String bank_id;
@@ -7,6 +9,24 @@ public class AccountInfoDTO {
 	private String account_u;
 	private Integer balance;
 	private Integer difference;
+	private Date timepoint;
+	private Integer resultbalance;
+
+	public Integer getResultbalance() {
+		return resultbalance;
+	}
+
+	public void setResultbalance(Integer resultbalance) {
+		this.resultbalance = resultbalance;
+	}
+
+	public Date getTimepoint() {
+		return timepoint;
+	}
+
+	public void setTimepoint(Date timepoint) {
+		this.timepoint = timepoint;
+	}
 
 	public String getBank_id() {
 		return bank_id;

@@ -1,5 +1,7 @@
 package com.sse.app.accounts;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,12 @@ public class AccountController {
 			return "/commons/message";
 		}
 
+	}
+
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public void list(ListOption listoption, Model model) throws Exception {
+		List<AccountInfoDTO> ar = accountService.list(listoption);
+		model.addAttribute("dto", ar);
 	}
 
 }

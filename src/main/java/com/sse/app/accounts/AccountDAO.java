@@ -1,5 +1,7 @@
 package com.sse.app.accounts;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,5 +35,9 @@ public class AccountDAO {
 
 	public AccountInfoDTO password(AccountInfoDTO accountInfoDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "password", accountInfoDTO);
+	}
+
+	public List<AccountInfoDTO> list(ListOption listOption) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "list", listOption);
 	}
 }

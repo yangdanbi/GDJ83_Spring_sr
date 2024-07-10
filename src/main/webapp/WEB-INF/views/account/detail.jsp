@@ -22,6 +22,7 @@
 
 <div>
 <a href="./transfer?bank_id=${acinfo.bank_id}&balance=${acinfo.balance}">이체</a>
+<a href="./list?bank_id=${acinfo.bank_id}&order=0&view=0">이체 내역 조회</a>
 </div>
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>

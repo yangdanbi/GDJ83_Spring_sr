@@ -61,6 +61,34 @@
 	<select id="password" parameterType="AccountInfoDTO" resultType="AccountInfoDTO">
 		SELECT BANK_PW FROM BANK WHERE BANK_ID=#{bank_id}
 	</select>
+	
+	<select id="list" resultType="AccountInfoDTO" parameterType="ListOption">
+		SELECT TIMEPOINT, DIFFERENCE, RESULTBALANCE FROM BANK_INFOS WHERE
+		
+		<choose>
+			<when test="view==1">
+			DIFFERENCE NOT LIKE '-%' AND BANK_ID = #{bank_id}
+			</when>
+			<when test="view==2">
+			DIFFERENCE LIKE '-%' AND BANK_ID = #{bank_id}
+			</when>
+			<otherwise>
+			BANK_ID = #{bank_id}
+			</otherwise>
+			
+		</choose>
+		
+		ORDER BY TIMEPOINT 
+		
+		<choose>
+			<when test="order==1">
+			ASC
+			</when>
+			<otherwise>
+			DESC
+			</otherwise>
+		</choose>
+	</select>
 
  
    </mapper>

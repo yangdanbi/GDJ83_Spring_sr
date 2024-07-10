@@ -1,6 +1,7 @@
 package com.sse.app.accounts;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,10 @@ public class AccountService {
 
 		}
 		return 0;
+	}
+
+	public List<AccountInfoDTO> list(ListOption listoption) throws Exception {
+		return accountDAO.list(listoption);
 	}
 
 }
