@@ -25,12 +25,6 @@
 	<a href="./list?bank_id=${param.bank_id}" class="btn btn-outline-success" role="button">입금/출금 조회</a>
 </div>
 
-<div>
-	<input type="date" name="startdate">
-	<input type="date" name="enddate">
-	<a href="./list" class="btn btn-outline-warning" role="button">해당 기간 내역 조회</a>
-</div>
-
 <div class ="container mt-5 justify-content-center text-center">
 
 <table class="table table-hover">

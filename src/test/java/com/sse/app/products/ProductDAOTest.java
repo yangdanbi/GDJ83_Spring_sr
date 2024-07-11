@@ -22,7 +22,7 @@ public class ProductDAOTest extends DefaultTest {
 		assertNotNull(productDTO);
 	}
 
-	@Test
+//	@Test
 	public void addInfoTest() throws Exception {
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setItem_name("비가");
@@ -34,8 +34,34 @@ public class ProductDAOTest extends DefaultTest {
 
 	}
 
-	public void accountInfoTest() throws Exception {
+//	@Test
+	public void addTest() throws Exception {
+		ProductDTO productDTO = new ProductDTO();
+		for (int i = 0; i < 100; i++) {
+			productDTO.setItem_name("자유입출금" + i);
+			Double r = ((int) (Math.random() * 1000)) / 100.0;
+			productDTO.setItem_rate(r);
+			productDTO.setItem_detail("상세설명" + i);
+			productDAO.addInfo(productDTO);
+			Thread.sleep(500);
+		}
+		System.out.println("Finish");
+	}
 
+	@Test
+	public void pageTest() throws Exception {
+
+		long perPage = 10;
+		long totalCount = 66;
+		long totalPage = totalCount / perPage;
+
+		if (totalCount % perPage != 0) {
+			totalPage = totalCount / perPage + 1;
+		} else {
+			totalPage = totalCount / perPage;
+		}
+
+		System.out.println(totalPage);
 	}
 
 }

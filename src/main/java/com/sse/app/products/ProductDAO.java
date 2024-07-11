@@ -14,9 +14,15 @@ public class ProductDAO {
 
 	private final String NAMESPACE = "com.sse.app.products.ProductDAO.";
 
-	public List<ProductDTO> getList() throws Exception {
+	public List<ProductDTO> getList(List<Long> ar) throws Exception {
 
-		return sqlSession.selectList(NAMESPACE + "getList");
+		return sqlSession.selectList(NAMESPACE + "getList", ar);
+
+	}
+
+	public Long getTotalCount() throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE + "getTotalCount");
 
 	}
 
