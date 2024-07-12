@@ -11,11 +11,8 @@
     <a class="nav-link" aria-current="page" href="/product/list">금융상품</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
+    <a class="nav-link" href="/notice/list">공지사항</a>
+
 <c:if test="${empty member}">	
   <li class="nav-item">
     <a class="nav-link" href="/member/join">회원가입</a>

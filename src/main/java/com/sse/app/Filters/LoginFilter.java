@@ -49,7 +49,7 @@ public class LoginFilter implements Filter {
 			chain.doFilter(request, response);
 		} else {
 //			1.forward
-			request.setAttribute("result", "권한이 없습니다");
+			request.setAttribute("result", "로그인이 필요한 항목입니다.");
 			request.setAttribute("url", "/member/login");
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/commons/message.jsp");
 			view.forward(request, response);
