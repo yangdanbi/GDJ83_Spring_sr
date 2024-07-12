@@ -8,13 +8,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sse.app.util.Pager;
+
 @Service
 public class ProductService {
 
 	@Autowired
 	private ProductDAO productDAO;
 
-	public Map<String, Object> getList(Long page) throws Exception {
+	public Map<String, Object> getList(Long page, String kind, String search) throws Exception {
 
 		if (page == null) {
 			page = 1L;
@@ -24,6 +26,11 @@ public class ProductService {
 			page = 1L;
 		}
 
+		if (search == null) {
+			search = "";
+		}
+
+//		보여줄 db의 시작행, 마지막행 구하기
 		long perPage = 10;
 		long startRow = 1 + (perPage * (page - 1));
 		long lastRow = page * perPage;
@@ -33,8 +40,14 @@ public class ProductService {
 		ar.add(startRow);
 		ar.add(lastRow);
 
+		Pager pager = new Pager();
+		pager.setStartRow(startRow);
+		pager.setLastRow(lastRow);
+		pager.setKind(kind);
+		pager.setSearch(search);
+
 //		1. 총 갯수(PK컬럼의 갯수) 총 페이지수 구하기, 내가 한 페이지에 몇개를 보여줄건지->그럼 몇 페이지가 나오는지
-		long totalCount = productDAO.getTotalCount();
+		long totalCount = productDAO.getTotalCount(pager);
 		long totalPage = totalCount / perPage;
 
 		if (totalCount % perPage != 0) {
@@ -49,7 +62,7 @@ public class ProductService {
 //		총 블럭의 수(5개짜리 페이지가 몇 묶음이냐, 몇 블럭이냐)
 		long totalBlock = 0;
 
-		if (totalCount / perBlock % 5 != 0) {
+		if (totalPage % perBlock != 0) {
 			totalBlock = totalPage / perBlock + 1;
 		} else {
 			totalBlock = totalPage / perBlock;
@@ -84,12 +97,14 @@ public class ProductService {
 		}
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("list", productDAO.getList(ar));
+		map.put("list", productDAO.getList(pager));
 		map.put("totalPage", totalPage);
 		map.put("startNum", startNum);
 		map.put("lastNum", lastNum);
 		map.put("pre", pre);
 		map.put("next", next);
+		map.put("kind", kind);
+		map.put("search", search);
 
 		return map;
 

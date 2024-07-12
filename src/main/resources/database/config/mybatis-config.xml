@@ -11,6 +11,7 @@
 		<typeAlias type="com.sse.app.accounts.AccountDTO" alias="AccountDTO"/>
 		<typeAlias type="com.sse.app.accounts.AccountInfoDTO" alias="AccountInfoDTO"/>
 		<typeAlias type="com.sse.app.accounts.ListOption" alias="ListOption"/>
+		<typeAlias type="com.sse.app.util.Pager" alias="Pager"/>
 	</typeAliases>
 
 </configuration>
