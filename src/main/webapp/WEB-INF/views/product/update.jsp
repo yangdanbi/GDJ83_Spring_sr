@@ -13,10 +13,13 @@
 		<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
 
-<div class ="text-center">
-<h1>상품 수정 정보 입력</h1>
+<div class = "justify-content-center text-center mt-3 mb-3">
+
+<h3>상품 수정 정보 입력하기</h3>
+
 </div>
 
+<div class="container">
 <form action="/product/update" method="post">
 <input type="hidden" name = "item_id" value="${dto.item_id}">
 <div>
@@ -33,8 +36,9 @@
   <input type="text" class="form-control" id="formGroupExampleInput" name ="item_rate" value="${dto.item_rate}">
 </div>
 </div>
-<button type = "submit">수정하기</button>
+<button type = "submit" class="btn btn-primary">수정하기</button>
 </form>
+</div>
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>

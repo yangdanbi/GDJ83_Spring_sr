@@ -12,9 +12,9 @@
 
 		<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-<div class ="container mt-3 justify-content-center text-center">
+<div class = "justify-content-center text-center mt-3 mb-3">
 
-<h1>${requestScope.dto.item_name} 상세 페이지</h1>
+<h3>${requestScope.dto.item_name} 상품 설명</h3>
 
 </div>
 
@@ -48,23 +48,31 @@
 
 </div>
 
+<div class="container">
 
-<div>
+<div align="right">
+<div class="mb-2">
 
-	<a href="./delete?item_id=${dto.item_id}"><button>삭제하기</button></a>
+	<a href="/account/add?item_id=${dto.item_id}"><button class="btn btn-primary">상품가입</button></a>
 	
 </div>
 
-<div>
 
-	<a href="./update?item_id=${dto.item_id}"><button>수정하기</button></a>
+
+<div class="mb-2">
+
+	<a href="./update?item_id=${dto.item_id}"><button class="btn btn-primary">수정하기</button></a>
 	
 </div>
 
-<div>
 
-	<a href="/account/add?item_id=${dto.item_id}"><button>상품가입</button></a>
+
+<div class="mb-2">
+
+	<a href="./delete?item_id=${dto.item_id}"><button class="btn btn-primary">삭제하기</button></a>
 	
+</div>
+</div>
 </div>
 
 

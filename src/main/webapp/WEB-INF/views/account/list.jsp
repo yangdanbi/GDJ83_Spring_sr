@@ -10,19 +10,22 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
-<div class ="container mt-3 justify-content-center text-center">
-<h1>해당 계좌 이체 내역 조회하기</h1>
+
+<div class = "justify-content-center text-center mt-3 mb-3">
+
+<h3>해당 계좌 이체 내역 조회하기</h3>
+
 </div>
 
-<div class="mb-3">
-	<a href="./list?bank_id=${param.bank_id}&order=1&view=${param.view}" class="btn btn-outline-primary" role="button">과거순으로</a>
-	<a href="./list?bank_id=${param.bank_id}&view=${param.view}" class="btn btn-outline-primary" role="button">최신순으로</a>
+<div class="mb-3 container" align="right">
+	<a href="./list?bank_id=${param.bank_id}&order=1&view=${param.view}" class="btn btn-primary" role="button">과거순으로</a>
+	<a href="./list?bank_id=${param.bank_id}&view=${param.view}" class="btn btn-primary" role="button">최신순으로</a>
 </div>
 
-<div class="mb-3">
-	<a href="./list?bank_id=${param.bank_id}&view=1" class="btn btn-outline-success" role="button">입금만 조회</a>
-	<a href="./list?bank_id=${param.bank_id}&view=2" class="btn btn-outline-success" role="button">출금만 조회</a>
-	<a href="./list?bank_id=${param.bank_id}" class="btn btn-outline-success" role="button">입금/출금 조회</a>
+<div class="mb-3 container" align="right">
+	<a href="./list?bank_id=${param.bank_id}&view=1" class="btn btn-success" role="button">입금만 조회</a>
+	<a href="./list?bank_id=${param.bank_id}&view=2" class="btn btn-success" role="button">출금만 조회</a>
+	<a href="./list?bank_id=${param.bank_id}" class="btn btn-success" role="button">입금/출금 조회</a>
 </div>
 
 <div class ="container mt-5 justify-content-center text-center">

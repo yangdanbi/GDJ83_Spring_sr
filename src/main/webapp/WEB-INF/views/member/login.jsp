@@ -11,12 +11,13 @@
 <body>
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 	
-<div class = "justify-content-center text-center mt-5 mb-5">
+<div class = "justify-content-center text-center mt-3 mb-3">
 
-<h1>로그인 정보 입력</h1>
+<h3>로그인 정보 입력</h3>
 
 </div>
 
+<div class="container">
 <form action="/member/login" method="post">
 	<div class="mb-3">
 		<label for="formGroupExampleInput" class="form-label">ID</label> 
@@ -32,12 +33,13 @@
     <label class="form-check-label" for="exampleCheck1">ID기억하기</label>
   </div>
 	
-	
-	<div class="col-12">
-		<button type="submit" class="btn btn-primary">로그인</button>
+	<div class="justify-content-end">
+		<button type="submit" class="btn btn-primary" style="float:right">로그인</button>
 	</div>
-</form>
 
+	
+</form>
+</div>
 
 
 	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>

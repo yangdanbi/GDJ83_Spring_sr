@@ -10,20 +10,62 @@
 		VALUES (NOTICE_SEQ.NEXTVAL,#{boardWriter},#{boardTitle},#{boardContents})
    	</insert>
    	
-   	<select id="">
+   	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
    		SELECT *
 		FROM
-			(SELECT ROWNUM,A.*
+			(SELECT ROWNUM R,A.*
 			FROM
 				(SELECT *
 				FROM NOTICE
+				<where>
+					<choose>
+						<when test="kind=='k1'">
+						BOARDTITLE LIKE '%'||#{search}||'%'
+						</when>
+						<when test="kind=='k2'">
+						BOARDCONTENTS LIKE '%'||#{search}||'%'
+						</when>
+						<otherwise>
+						BOARDWRITER LIKE '%'||#{search}||'%'
+						</otherwise>
+					</choose>
+				</where>
 				ORDER BY BOARDNUM DESC) A)
-		WHERE ROWNUM BETWEEN #{startRow} AND #{lastRow}
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
    	</select>
    	
-   	<select id="countList" resultType="java.lang.Long">
+   	<select id="countList" resultType="java.lang.Long" parameterType="Pager">
    		SELECT COUNT(ROWNUM) FROM NOTICE
+   						<where>
+					<choose>
+						<when test="kind=='k1'">
+						BOARDTITLE LIKE '%'||#{search}||'%'
+						</when>
+						<when test="kind=='k2'">
+						BOARDCONTENTS LIKE '%'||#{search}||'%'
+						</when>
+						<otherwise>
+						BOARDWRITER LIKE '%'||#{search}||'%'
+						</otherwise>
+					</choose>
+				</where>
    	</select>
+   
+   <select id="getDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
+   	SELECT BOARDNUM ,BOARDTITLE,BOARDCONTENTS FROM NOTICE WHERE BOARDNUM = #{boardNum}
+   </select>
+   
+   <update id="hit" parameterType="NoticeDTO">
+   	UPDATE NOTICE SET BOARDHIT = BOARDHIT + 1 WHERE BOARDNUM = #{boardNum}
+   </update>
+   
+   <update id="update" parameterType="NoticeDTO">
+   	UPDATE NOTICE SET BOARDTITLE = #{boardTitle}, BOARDCONTENTS =#{boardContents} WHERE BOARDNUM =#{boardNum}
+   </update>
+   
+   <delete id="delete" parameterType="NoticeDTO">
+   	DELETE NOTICE WHERE BOARDNUM =#{boardNum}
+   </delete>
    
    
    </mapper>

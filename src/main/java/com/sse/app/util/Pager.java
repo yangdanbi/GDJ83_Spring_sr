@@ -6,6 +6,15 @@ public class Pager {
 	private String search;
 	private Long startRow;
 	private Long lastRow;
+	private Long viewPage;
+	
+	public Long getViewPage() {
+		return viewPage;
+	}
+
+	public void setViewPage(Long viewPage) {
+		this.viewPage = viewPage;
+	}
 
 	public String getKind() {
 		return kind;

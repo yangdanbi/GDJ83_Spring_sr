@@ -12,35 +12,13 @@
 
 		<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
+<div class = "justify-content-center text-center mt-3 mb-3">
+
+<h3>금융상품 리스트</h3>
+
+</div>
 
 <div class ="container mt-5 justify-content-center text-center">
-<!--검색어 입력 폼-->
-
-	<form action="./list" method="get" class="row row-cols-lg-auto g-3 align-items-center">
-  
-  <div class="col-12">
-    <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-    <select name = "kind" class="form-select" id="inlineFormSelectPref">
-      <option value="k1">상품명</option>
-      <option value="k2">상품내용</option>
-    </select>
-  </div>
-  
-  <div class="col-12">
-    <label class="visually-hidden" for="inlineFormInputGroupUsername"></label>
-    <div class="input-group">
-      <input name = "search" type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="검색어를 입력하세요">
-    </div>
-  </div>
-
-
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">검색하기</button>
-  </div>
-</form>
-
-
-
 
 
 <table class="table table-hover">
@@ -69,8 +47,21 @@
 
 
 </table>
+</div>
+
+<div class ="container justify-content-center text-center mb-5">
+
+<div style="float:right">
+	<a href="/product/add"><button class="btn btn-primary">상품 추가</button></a>
+</div>
+
+</div>
+
+<!--페이지 버튼-->
+
+<div class ="container justify-content-center text-center">
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
 
     <li class="page-item ${map.pre?'':'disabled'}">
       <a class="page-link" href="./list?page=${map.startNum-1}&kind=${map.kind}&search=${map.search}" aria-label="Previous">
@@ -90,15 +81,35 @@
   </ul>
 </nav>
 
+	<form action="./list" method="get" class="row row-cols-lg-auto g-3 align-items-center justify-content-end">
+  
+
+  <div class="col-12">
+    <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+    <select name = "kind" class="form-select" id="inlineFormSelectPref">
+      <option value="k1">상품명</option>
+      <option value="k2">상품내용</option>
+    </select>
+  </div>
+  
+  <div class="col-12">
+    <label class="visually-hidden" for="inlineFormInputGroupUsername"></label>
+    <div class="input-group">
+      <input name = "search" type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="검색어를 입력하세요">
+    </div>
+  </div>
+
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">검색하기</button>
+  </div>
+</form>
+
+
 </div>
 
 
 
-<div>
-
-	<a href="/product/add"><button>상품 추가</button></a>
-
-</div>
 
 
 

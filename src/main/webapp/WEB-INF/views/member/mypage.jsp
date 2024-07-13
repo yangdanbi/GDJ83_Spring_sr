@@ -11,11 +11,13 @@
 <body>
 		<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-<div>
-<h1>마이페이지</h1>
+<div class = "justify-content-center text-center mt-3 mb-3">
+
+<h3>마이페이지</h3>
+
 </div>
 
-<div>
+<div class="container">
 
 
   <div class="col-12">
@@ -35,19 +37,41 @@
     <input type="text" class="form-control" id="inputMail" name="member_mail" value="${member.member_mail}" readonly>
   </div>
   
-  <div class="col-12">
+  <div class="col-12 mt-3">
     <a href="/member/update"><button class="btn btn-primary">회원정보 수정하기</button></a>
   </div>
-  
-  <div>
-  	<h3>내가 가입한 상품</h3>
-  	
-  	<c:forEach items="${member.dtos}" var="ac">
-  	<a href="../account/detail?bank_id=${ac.bank_id}"><h3>계좌번호 : ${ac.bank_id}</h3></a>
-  	<h3>잔액 : ${ac.balance}</h3>	
-  	</c:forEach>
   </div>
   
+
+  <div class="container mt-3 text-center">
+  	<h3>🌟내가 가입한 상품🌟</h3>
+  </div>
+  
+
+  <div class ="container mt-5 justify-content-center text-center">
+<table class="table table-hover mt-3">
+
+	<thead>
+	
+		<tr>
+			<td>계좌번호</td>
+			<td>잔액</td>
+		</tr>
+	</thead>
+	<tbody>
+  		<c:forEach items="${member.dtos}" var="ac">
+		<tr>
+		
+			<td><a href="../account/detail?bank_id=${ac.bank_id}">${ac.bank_id}</a></td>
+			<td> ${ac.balance}</td>
+
+		
+		</tr>	
+			</c:forEach>
+	</tbody>
+
+
+</table>  
 
 </div>
 

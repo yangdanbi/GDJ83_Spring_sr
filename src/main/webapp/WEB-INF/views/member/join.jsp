@@ -13,12 +13,13 @@
 
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-<div class = "justify-content-center text-center mt-5 mb-5">
+<div class = "justify-content-center text-center mt-3 mb-3">
 
-<h1>회원 가입 정보 입력</h1>
+<h3>회원가입 정보 입력</h3>
 
 </div>
 
+<div class="container">
 <form class="row g-3" action="/member/join" method="post">
 
   <div class="col-md-6">
@@ -47,7 +48,7 @@
   </div>
   
 </form>
-
+</div>
 
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>

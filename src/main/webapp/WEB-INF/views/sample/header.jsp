@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<nav class="navbar justify-content-center" style="background-color: #FFD9E9;">
-  <ul class="nav nav-underline">
+<nav class="navbar justify-content-center" style="background-color: #FFD9E9">
+  <ul class="nav nav-pills">
     <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="/">HOME</a>
+    <a class="nav-link active bg-success-subtle text-black" aria-current="page" href="/">HOME🐈‍⬛</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="/product/list">금융상품</a>

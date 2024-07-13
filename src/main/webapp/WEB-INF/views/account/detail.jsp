@@ -11,18 +11,52 @@
 <body>
 <c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-<h1>해당 상품 정보 확인하기</h1>
-<h3>가입자명 : ${member.member_name}</h3>
-<h3>개설일 : ${acinfo.open_date}</h3>
-<h3>계좌번호 : ${acinfo.bank_id}</h3>
-<h3>상품명 : ${acinfo.productDTO.item_name}</h3>
-<h3>상품내용 : ${acinfo.productDTO.item_detail}</h3>
-<h3>이자율 : ${acinfo.productDTO.item_rate}</h3>
-<h3>잔액 : ${acinfo.balance}</h3>
+<div class = "justify-content-center text-center mt-3 mb-3">
 
-<div>
-<a href="./transfer?bank_id=${acinfo.bank_id}&balance=${acinfo.balance}">이체</a>
-<a href="./list?bank_id=${acinfo.bank_id}&order=0&view=0">이체 내역 조회</a>
+<h3>해당 상품 정보 확인하기</h3>
+
+</div>
+
+
+<div class ="container mt-5 justify-content-center text-center">
+	<table class="table table-hover mt-3">
+
+		<thead>
+		
+			<tr>
+				<td>가입자명</td>
+				<td>개설일</td>
+				<td>계좌번호</td>
+				<td>상품명</td>
+				<td>상품내용</td>
+				<td>이자율</td>
+				<td>잔액</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			
+				<td>${member.member_name}</td>
+				<td>${acinfo.open_date}</td>
+				<td>${acinfo.bank_id}</td>
+				<td>${acinfo.productDTO.item_name}</td>
+				<td>${acinfo.productDTO.item_detail}</td>
+				<td>${acinfo.productDTO.item_rate}</td>
+				<td>${acinfo.balance}</td>
+	
+			
+			</tr>	
+
+		</tbody>
+
+
+</table>  
+
+</div>
+
+<div class="container" align="right">
+<a href="./transfer?bank_id=${acinfo.bank_id}&balance=${acinfo.balance}" class="btn btn-primary">이체</a>
+<a href="./list?bank_id=${acinfo.bank_id}&order=0&view=0" class="btn btn-primary">이체 내역 조회</a>
 </div>
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>

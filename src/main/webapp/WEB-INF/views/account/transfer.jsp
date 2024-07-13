@@ -12,10 +12,13 @@
 <c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
 
-<div class ="text-center">
-<h1>이체 정보 입력하기</h1>
+<div class = "justify-content-center text-center mt-3 mb-3">
+
+<h3>이체 정보 입력하기</h3>
+
 </div>
 
+<div class="container">
 <form action="/account/transfer" method="post">
 
 <div class="mb-3">
@@ -43,8 +46,9 @@
   <input type="text" class="form-control" id="formGroupExampleInput" name ="difference">
 </div>
 
-<button type = "submit">이체하기</button>
+<button type = "submit" class="btn btn-primary">이체하기</button>
 </form>
+</div>
 
 <c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>

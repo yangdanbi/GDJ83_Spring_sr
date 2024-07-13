@@ -11,8 +11,10 @@
 <body>
 <c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-<div class = "justify-content-center text-center mt-3">
-<h3>~ 공지사항 게시판 ~</h3>
+<div class = "justify-content-center text-center mt-3 mb-3">
+
+<h3>공지사항 게시판</h3>
+
 </div>
 
 
@@ -35,11 +37,11 @@
 			<c:forEach items="${map.list}" var="ar">
 		<tr>
 		
-			<td>${ar.item_id}</td>
-			<td><a href="">${ar.item_id}</a></td>
-			<td>${ar.item_id}</td>
-			<td>${ar.item_detail}</td>
-			<td>${ar.item_rate}</td>
+			<td>${ar.boardNum}</td>
+			<td><a href="/notice/detail?boardNum=${ar.boardNum}">${ar.boardTitle}</a></td>
+			<td>${ar.boardWriter}</td>
+			<td>${ar.createDate}</td>
+			<td>${ar.boardHit}</td>
 		
 		</tr>	
 			</c:forEach>
@@ -48,9 +50,22 @@
 
 </table>
 
+</div>
+
+<div class ="container justify-content-center text-center mb-5">
+	
+	<div style="float:right">
+	 <a href="./add?write=add"><button type="submit" class="btn btn-primary">글쓰기</button></a>
+	</div>
+
+</div>
+
+
+
 <!--페이지 버튼-->
+<div class ="container justify-content-center text-center">
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
 
     <li class="page-item ${map.pre?'':'disabled'}">
       <a class="page-link" href="./list?page=${map.startNum-1}&kind=${map.kind}&search=${map.search}" aria-label="Previous">
@@ -71,7 +86,7 @@
 </nav>
 
 <!--검색 폼-->
-	<form action="./list" method="get" class="row row-cols-lg-auto g-3 align-items-center">
+	<form action="./list" method="get" class="row row-cols-lg-auto g-3 align-items-center justify-content-end">
   
   <div class="col-12">
     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
@@ -96,9 +111,6 @@
 </form>
 
 
-  <div class="col-8 mt-3">
-    <a href="./add"><button type="submit" class="btn btn-primary">글쓰기</button></a>
-  </div>
 
 </div>
 
