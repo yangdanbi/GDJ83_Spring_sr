@@ -16,7 +16,7 @@
 <div class="container mt-3">
 		<div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label disabled">작성자</label>
-		  <input class="form-control" type="text" name="boardWriter" value="${member.member_id}" readonly aria-label="input example">
+		  <input class="form-control" type="text" name="boardWriter" value="${dto.boardWriter}" readonly aria-label="input example">
 		</div>
 		<div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label">글제목</label>

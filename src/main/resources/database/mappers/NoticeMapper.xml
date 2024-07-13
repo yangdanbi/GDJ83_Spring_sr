@@ -52,7 +52,7 @@
    	</select>
    
    <select id="getDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
-   	SELECT BOARDNUM ,BOARDTITLE,BOARDCONTENTS FROM NOTICE WHERE BOARDNUM = #{boardNum}
+   	SELECT BOARDNUM ,BOARDTITLE,BOARDCONTENTS,BOARDWRITER FROM NOTICE WHERE BOARDNUM = #{boardNum}
    </select>
    
    <update id="hit" parameterType="NoticeDTO">
