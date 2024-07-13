@@ -49,9 +49,17 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/member/delete</url-pattern>
   </filter-mapping>
-      <filter-mapping>
+  <filter-mapping>
     <filter-name>LoginFilter</filter-name>
-    <url-pattern>/notice/write</url-pattern>
+    <url-pattern>/notice/add</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/notice/update</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  <filter-name>LoginFilter</filter-name>
+    <url-pattern>/notice/delete</url-pattern>
   </filter-mapping>
 
 </web-app>
