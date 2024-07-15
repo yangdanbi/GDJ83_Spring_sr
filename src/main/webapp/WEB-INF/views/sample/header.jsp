@@ -12,7 +12,10 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/notice/list">공지사항</a>
-
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" href="/qna/list">QnA</a>
+  </li>
 <c:if test="${empty member}">	
   <li class="nav-item">
     <a class="nav-link" href="/member/join">회원가입</a>
