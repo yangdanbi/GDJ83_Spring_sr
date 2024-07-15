@@ -12,7 +12,9 @@
 		<typeAlias type="com.sse.app.accounts.AccountInfoDTO" alias="AccountInfoDTO"/>
 		<typeAlias type="com.sse.app.accounts.ListOption" alias="ListOption"/>
 		<typeAlias type="com.sse.app.util.Pager" alias="Pager"/>
-		<typeAlias type="com.sse.app.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.sse.app.boards.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.sse.app.boards.notices.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.sse.app.boards.qnas.QnaDTO" alias="QnaDTO"/>
 	</typeAliases>
 
 </configuration>

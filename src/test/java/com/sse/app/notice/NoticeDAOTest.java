@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sse.app.DefaultTest;
+import com.sse.app.boards.notices.NoticeDAO;
+import com.sse.app.boards.notices.NoticeDTO;
 
 public class NoticeDAOTest extends DefaultTest {
 

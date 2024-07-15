@@ -1,79 +1,80 @@
-package com.sse.app.notice;
+package com.sse.app.boards;
 
 import java.sql.Date;
 
-public class NoticeDTO {
-	private Long BoardNum;
-	private String BoardWriter;
-	private String BoardTitle;
-	private Date CreateDate;
-	private Date UpdateDate;
-	private Long BoardHit;
-	private String BoardContents;
-	private String BoardCategory;
+public class BoardDTO {
+
+	private Long boardNum;
+	private String boardWriter;
+	private String boardTitle;
+	private Date createDate;
+	private Date updateDate;
+	private Long boardHit;
+	private String boardContents;
+	private String boardCategory;
 
 	public Long getBoardNum() {
-		return BoardNum;
+		return boardNum;
 	}
 
 	public void setBoardNum(Long boardNum) {
-		BoardNum = boardNum;
+		this.boardNum = boardNum;
 	}
 
 	public String getBoardWriter() {
-		return BoardWriter;
+		return boardWriter;
 	}
 
 	public void setBoardWriter(String boardWriter) {
-		BoardWriter = boardWriter;
+		this.boardWriter = boardWriter;
 	}
 
 	public String getBoardTitle() {
-		return BoardTitle;
+		return boardTitle;
 	}
 
 	public void setBoardTitle(String boardTitle) {
-		BoardTitle = boardTitle;
+		this.boardTitle = boardTitle;
 	}
 
 	public Date getCreateDate() {
-		return CreateDate;
+		return createDate;
 	}
 
 	public void setCreateDate(Date createDate) {
-		CreateDate = createDate;
+		this.createDate = createDate;
 	}
 
 	public Date getUpdateDate() {
-		return UpdateDate;
+		return updateDate;
 	}
 
 	public void setUpdateDate(Date updateDate) {
-		UpdateDate = updateDate;
+		this.updateDate = updateDate;
 	}
 
 	public Long getBoardHit() {
-		return BoardHit;
+		return boardHit;
 	}
 
 	public void setBoardHit(Long boardHit) {
-		BoardHit = boardHit;
+		this.boardHit = boardHit;
 	}
 
 	public String getBoardContents() {
-		return BoardContents;
+		return boardContents;
 	}
 
 	public void setBoardContents(String boardContents) {
-		BoardContents = boardContents;
+		this.boardContents = boardContents;
 	}
 
 	public String getBoardCategory() {
-		return BoardCategory;
+		return boardCategory;
 	}
 
 	public void setBoardCategory(String boardCategory) {
-		BoardCategory = boardCategory;
+		this.boardCategory = boardCategory;
 	}
 
 }
