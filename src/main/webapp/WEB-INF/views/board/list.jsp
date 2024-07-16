@@ -11,14 +11,22 @@
 <body>
 <c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-<div class = "justify-content-center text-center mt-3 mb-3">
+<c:choose>
+	<c:when test="${board=='QnA'}">
+	<div class = "justify-content-center text-center mt-3 mb-3">
+		<h3>QnA 게시판</h3>
+	</div>
+	</c:when>
+	<c:otherwise>
+	<div class = "justify-content-center text-center mt-3 mb-3">
+		<h3>공지사항 게시판</h3>
+	</div>
+	</c:otherwise>
+</c:choose>
 
-<h3>공지사항 게시판</h3>
-
-</div>
 
 
-<div class ="container mt-5 justify-content-center text-center">
+<div class ="container mt-5 justify-content-center">
 
 
 <table class="table table-hover">
@@ -37,8 +45,27 @@
 			<c:forEach items="${list}" var="ar">
 		<tr>
 		
-			<td>${ar.boardNum}</td>
-			<td><a href="/notice/detail?boardNum=${ar.boardNum}">${ar.boardTitle}</a></td>
+			<td>
+			<c:if test="${ar.del eq 0}">
+			${ar.boardNum}
+			</c:if>
+			</td>
+			<td>
+			<c:choose>
+				<c:when test="${ar.del eq 0}">
+				
+			<a href="./detail?boardNum=${ar.boardNum}">
+			<c:catch>
+			<c:forEach begin="1" end="${ar.depth}">--</c:forEach>
+			</c:catch>
+			${ar.boardTitle}
+			</a>
+				</c:when>
+				<c:otherwise>
+				삭제된 글입니다
+				</c:otherwise>
+			</c:choose>
+			</td>
 			<td>${ar.boardWriter}</td>
 			<td>${ar.createDate}</td>
 			<td>${ar.boardHit}</td>
@@ -91,9 +118,9 @@
   <div class="col-12">
     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
     <select name = "kind" class="form-select" id="inlineFormSelectPref">
-      <option value="k1">제목</option>
-      <option value="k2">내용</option>
-      <option value="k3">작성자</option>
+      <option value="title">제목</option>
+      <option value="contents">내용</option>
+      <option value="writer">작성자</option>
     </select>
   </div>
   

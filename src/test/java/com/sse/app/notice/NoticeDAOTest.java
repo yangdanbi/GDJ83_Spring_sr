@@ -40,4 +40,5 @@ public class NoticeDAOTest extends DefaultTest {
 
 		System.out.println("Finish");
 	}
+
 }

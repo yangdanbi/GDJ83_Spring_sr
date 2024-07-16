@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,11 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "공지사항";
+	}
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String getList(Model model, Pager pager) throws Exception {
@@ -44,12 +50,12 @@ public class NoticeController {
 		if (num > 0) {
 
 			model.addAttribute("result", "게시글을 등록했습니다");
-			model.addAttribute("url", "/board/list");
+			model.addAttribute("url", "/notice/list");
 			return "/commons/message";
 
 		}
 		model.addAttribute("result", "게시글 등록에 실패했습니다");
-		model.addAttribute("url", "/board/list");
+		model.addAttribute("url", "/notice/list");
 		return "/commons/message";
 
 	}
@@ -64,8 +70,9 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public String update(String write, Model model) {
-		model.addAttribute("write", write);
+	public String update(String write, Model model, NoticeDTO noticeDTO) throws Exception {
+		BoardDTO boardDTO = noticeService.getDetail(noticeDTO);
+		model.addAttribute("dto", boardDTO);
 		return "/board/write";
 	}
 
@@ -74,11 +81,11 @@ public class NoticeController {
 		int num = noticeService.update(noticeDTO);
 		if (num > 0) {
 			model.addAttribute("result", "수정 완료");
-			model.addAttribute("url", "/board/list");
+			model.addAttribute("url", "/notice/list");
 			return "/commons/message";
 		}
 		model.addAttribute("result", "수정 실패");
-		model.addAttribute("url", "/board/list");
+		model.addAttribute("url", "/notice/list");
 		return "/commons/message";
 	}
 
@@ -88,11 +95,11 @@ public class NoticeController {
 
 		if (num > 0) {
 			model.addAttribute("result", "삭제 완료");
-			model.addAttribute("url", "/board/list");
+			model.addAttribute("url", "/notice/list");
 			return "/commons/message";
 		}
 		model.addAttribute("result", "삭제 실패");
-		model.addAttribute("url", "/board/list");
+		model.addAttribute("url", "/notice/list");
 		return "/commons/message";
 	}
 

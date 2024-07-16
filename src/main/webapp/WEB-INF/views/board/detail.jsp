@@ -11,30 +11,62 @@
 <body>
 <c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
+	<div class = "justify-content-center text-center mt-3 mb-3">
+		<h3>${board} 글</h3>
+	</div>
+	
+	<div class ="container mt-5 justify-content-center text-center">
 
 
-<div class="container mt-3">
-		<div class="mb-3">
-		  <label for="exampleFormControlInput1" class="form-label disabled">작성자</label>
-		  <input class="form-control" type="text" name="boardWriter" value="${dto.boardWriter}" readonly aria-label="input example">
-		</div>
-		<div class="mb-3">
-		  <label for="exampleFormControlInput1" class="form-label">글제목</label>
-		  <input type="text" class="form-control" id="exampleFormControlInput1" name="boardTitle" value="${dto.boardTitle}" readonly>
-		</div>
-		<div class="mb-3">
-		  <label for="exampleFormControlTextarea1" class="form-label">글내용</label>
+<table class="table table-hover">
+
+	<thead>
+	
+		<tr>
+			<td>글번호</td>
+			<td>글제목</td>
+			<td>작성자</td>
+			<td>작성일자</td>
+			<td>수정일자</td>
+			<td>조회수</td>
+		</tr>
+
+	</thead>
+	<tbody>
+		<tr>
+			<td>${dto.boardNum}</td>
+			<td>${dto.boardTitle}</td>
+			<td>${dto.boardWriter}</td>
+			<td>${dto.createDate}</td>
+			<td>${dto.updateDate}</td>
+			<td>${dto.boardHit}</td>
+		</tr>
+	</tbody>
+
+
+</table>
+
+	
+		<div>
+		  <label for="exampleFormControlTextarea1" class="form-label"></label>
 		  <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="boardContents" readOnly>${dto.boardContents}</textarea>
 		</div>
 		<div align="right">
+		<c:if test="${board=='QnA'}">
 		<div class="col-8 mt-3">
-		  <a href="./update?write=update&boardTitle=${dto.boardTitle}&boardContents=${dto.boardContents}&boardNum=${dto.boardNum}"><button type="submit" class="btn btn-primary">수정하기</button></a>
+		  <a href="./reply?boardNum=${dto.boardNum}"><button type="submit" class="btn btn-primary">답글달기</button></a>
+		  </div>
+		  </c:if>
+		  
+		  <c:if test="${member.member_id==dto.boardWriter}">
+		<div class="col-8 mt-3">
+		  <a href="./update?write=update&boardNum=${dto.boardNum}"><button type="submit" class="btn btn-primary">수정하기</button></a>
 		  </div>
 		<div class="col-8 mt-3">
 		  <a href="./delete?boardNum=${dto.boardNum}"><button type="submit" class="btn btn-primary">삭제하기</button></a>
 		  </div>
-		  </div>	
-
+		</c:if>
+		</div>
 </div>
 
 
