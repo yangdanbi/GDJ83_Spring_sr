@@ -23,7 +23,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
 
-		System.out.println("Master");
+		System.out.println("Study_Conflict");
 
 		HttpSession session = request.getSession();
 
