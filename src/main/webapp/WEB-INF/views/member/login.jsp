@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
+<c:import url="/WEB-INF/views/sample/header_css.jsp"></c:import>
 </head>
 <body>
-	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
+
+<c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
+</body>
 	
 <div class = "justify-content-center text-center mt-3 mb-3">
 
@@ -40,8 +42,5 @@
 	
 </form>
 </div>
-
-
-	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
-</body>
+<c:import url="/WEB-INF/views/sample/footer.jsp"></c:import>
 </html>

@@ -7,15 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <script type="text/javascript">
+	alert('${result}');
+	location.href='${url}';
 
-
-alert('${requestScope.result}');
-
-location.href='${url}';
 
 </script>
-
 </body>
-</html>
+</html>>
