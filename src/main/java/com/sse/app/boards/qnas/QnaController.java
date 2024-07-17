@@ -21,6 +21,8 @@ import com.sse.app.util.Pager;
 @RequestMapping("/qna/*")
 public class QnaController {
 
+	private String conflict;
+
 	@Autowired
 	private QnaService qnaService;
 
