@@ -23,6 +23,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
 
+		System.out.println("Master");
+
 		HttpSession session = request.getSession();
 
 //		Cookie cookie = new Cookie("test", "SSE");
