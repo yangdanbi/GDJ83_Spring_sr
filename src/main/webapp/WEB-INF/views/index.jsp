@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <c:import url="./sample/header_css.jsp"></c:import>
 </head>
-<body style="background-image: url("background-img.png")">
+<body style="background-image: url('/resources/images/background-img.png')">
 
 <c:import url="./sample/topheader.jsp"></c:import>
 

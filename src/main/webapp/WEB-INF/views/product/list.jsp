@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <c:import url="/WEB-INF/views/sample/header_css.jsp"></c:import>
 </head>
-<body>
+<body style="background-image: url('/resources/images/background-img.png')">
 
 	<c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
 </body>
