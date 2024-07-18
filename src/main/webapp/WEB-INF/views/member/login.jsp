@@ -13,7 +13,7 @@
 	
 <div class = "justify-content-center text-center mt-3 mb-3">
 
-<h3>로그인 정보 입력</h3>
+<h3>Login</h3>
 
 </div>
 
@@ -30,11 +30,11 @@
 	
 	<div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember">
-    <label class="form-check-label" for="exampleCheck1">ID기억하기</label>
+    <label class="form-check-label" for="exampleCheck1">IDremind</label>
   </div>
 	
 	<div class="justify-content-end">
-		<button type="submit" class="btn btn-primary" style="float:right">로그인</button>
+		<button type="submit" class="btn btn-primary" style="float:right">Login</button>
 	</div>
 
 	

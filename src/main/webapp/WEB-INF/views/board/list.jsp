@@ -14,12 +14,12 @@
 <c:choose>
 	<c:when test="${board=='QnA'}">
 	<div class = "justify-content-center text-center mt-3 mb-3">
-		<h3>QnA 게시판</h3>
+		<h3>QnA</h3>
 	</div>
 	</c:when>
 	<c:otherwise>
 	<div class = "justify-content-center text-center mt-3 mb-3">
-		<h3>공지사항 게시판</h3>
+		<h3>Notice</h3>
 	</div>
 	</c:otherwise>
 </c:choose>
