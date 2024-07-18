@@ -1,21 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
+<c:import url="/WEB-INF/views/sample/header_css.jsp"></c:import>
 </head>
+<body style="background-image: url('/resources/images/background-img.png')">
 
-<body>
-
-	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
-
+<c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
+</body>
 <div class = "justify-content-center text-center mt-3 mb-3">
 
-<h3>회원가입 정보 입력</h3>
+<h3>Join</h3>
 
 </div>
 
@@ -31,11 +30,11 @@
     <input type="password" class="form-control" id="inputPassword" name="member_pw">
   </div>
    <div class="col-md-6">
-    <label for="inputName" class="form-label">이름</label>
+    <label for="inputName" class="form-label">Name</label>
     <input type="text" class="form-control" id="inputName" name="member_name">
   </div>
    <div class="col-md-6">
-    <label for="inputPhone" class="form-label">전화번호</label>
+    <label for="inputPhone" class="form-label">Phone-Number</label>
     <input type="text" class="form-control" id="inputPhone" name="member_phone">
   </div>
   <div class="col-12">
@@ -44,13 +43,11 @@
   </div>
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">회원가입 하기</button>
+    <button type="submit" class="btn btn-primary">Join</button>
   </div>
   
 </form>
 </div>
 
-
-<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
-</body>
+<c:import url="/WEB-INF/views/sample/footer.jsp"></c:import>
 </html>
