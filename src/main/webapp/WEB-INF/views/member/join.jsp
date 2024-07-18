@@ -12,42 +12,56 @@
 
 <c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
 </body>
-<div class = "justify-content-center text-center mt-3 mb-3">
 
-<h3>Join</h3>
 
-</div>
-
-<div class="container">
-<form class="row g-3" action="/member/join" method="post">
-
-  <div class="col-md-6">
-    <label for="inputID" class="form-label">ID</label>
-    <input type="text" class="form-control" id="inputEmail" name="member_id">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword" name="member_pw">
-  </div>
-   <div class="col-md-6">
-    <label for="inputName" class="form-label">Name</label>
-    <input type="text" class="form-control" id="inputName" name="member_name">
-  </div>
-   <div class="col-md-6">
-    <label for="inputPhone" class="form-label">Phone-Number</label>
-    <input type="text" class="form-control" id="inputPhone" name="member_phone">
-  </div>
-  <div class="col-12">
-    <label for="inputMail" class="form-label">E-mail</label>
-    <input type="text" class="form-control" id="inputMail" name="member_mail">
-  </div>
-
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Join</button>
-  </div>
+<div class ="container mt-5 justify-content-center">
+  <form class="row g-3" action="/member/join" method="post" ID="frm">
   
-</form>
-</div>
+    <div>
+      <label for="inputID" class="form-label">ID</label>
+      <input type="text" class="form-control" id="inputId" name="member_id">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword">
+    </div>
+    <div id="pwerror1"></div>
+    <div class="col-md-6">
+      <label for="inputPassword" class="form-label">passwordCheck</label>
+      <input type="password" class="form-control" id="passwordCheck" name="member_pw">
+    </div>
+    <div id="pwerror2"></div>
+    <div class="col-md-6">  
+      <label for="inputName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="inputName" name="member_name">
+    </div>
+     <div class="col-md-6">
+      <label for="inputPhone" class="form-label">Phone-Number</label>
+      <input type="text" class="form-control" id="inputPhone" name="member_phone">
+    </div>
+    <div class="col-12">
+      <label for="inputMail" class="form-label">E-mail</label>
+      <input type="text" class="form-control" id="inputMail" name="member_mail">
+    </div>
+  
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" id="add">사진파일추가</button>
+    </div>
+  
+    <div id="result">
+  
+    </div>
+  
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" id="btn">Join</button>
+    </div>
+    
+  </form>
+  
+  </div>
+
 
 <c:import url="/WEB-INF/views/sample/footer.jsp"></c:import>
+<script type="text/javascript" src="../resources/js/member/memberjoincheck.js"></script>
+<script type="text/javascript" src="../resources/js/commons/files.js"></script>
 </html>
