@@ -15,7 +15,7 @@
 
 
 <div class ="container mt-5 justify-content-center">
-  <form class="row g-3" action="/member/join" method="post" ID="frm">
+  <form class="row g-3" action="/member/join" method="post" ID="frm" enctype="multipart/form-data">
   
     <div>
       <label for="inputID" class="form-label">ID</label>
@@ -53,7 +53,7 @@
     </div>
   
     <div class="col-12">
-      <button type="button" class="btn btn-primary" id="btn">Join</button>
+      <button type="submit" class="btn btn-primary" id="btn">Join</button>
     </div>
     
   </form>

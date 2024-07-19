@@ -18,20 +18,31 @@
    </select>
    
    <select id="detail" parameterType="MemberDTO" resultMap="loginResult">
-   	SELECT m.*, b.*
+   	SELECT m.*, b.*,f.*
 	FROM MEMBERS m 
 		 LEFT OUTER JOIN
 		 BANK b
 		 ON m.MEMBER_ID =b.MEMBER_ID
+		 LEFT OUTER JOIN
+		 MEMBERFILES f
+		 ON m.MEMBER_ID = f.MEMBER_ID
 	WHERE m.MEMBER_ID = #{member_id}
    </select>
    
    <resultMap type="MemberDTO" id="loginResult">
+   
    		<id column="MEMBER_ID" property="member_id"/>
    		<result column="MEMBER_PW" property="member_pw"/>
    		<result column="MEMBER_NAME" property="member_name"/>
    		<result column="MEMBER_PHONE" property="member_phone"/>
    		<result column="MEMBER_MAIL" property="member_mail"/>
+   		
+   		<association property="memberFileDTO" javaType="MemberFileDTO">
+   			<id column="FILENUM" property="fileNum"/>
+   			<result column="FILENAME" property="fileName"/>
+   			<result column="ORINAME" property="oriName"/>
+   		</association>
+   		
    		<collection property="dtos" javaType="java.util.List" ofType="AccountDTO">
    			<id column="BANK_ID" property="bank_id"/>
    			<result column="ITEM_ID" property="item_id"/>
@@ -39,6 +50,7 @@
    			<result column="BANK_PW" property="bank_pw"/>
    			<result column="BALANCE" property="balance"/>
    		</collection>
+   		
    
    
    </resultMap>
@@ -55,6 +67,10 @@
 		DELETE MEMBERS WHERE MEMBER_ID=#{member_id}
 	
 	</delete>
+	
+	<insert id="joinFile" parameterType="MemberFileDTO">
+		INSERT INTO MEMBERFILES VALUES(FILES_SEQ.NEXTVAL,#{member_id},#{fileName},#{oriName})
+	</insert>
 	
    
    </mapper>

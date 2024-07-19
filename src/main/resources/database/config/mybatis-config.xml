@@ -15,6 +15,8 @@
 		<typeAlias type="com.sse.app.boards.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.sse.app.boards.notices.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.sse.app.boards.qnas.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.sse.app.files.FileDTO" alias="FileDTO"/>
+		<typeAlias type="com.sse.app.members.MemberFileDTO" alias="MemberFileDTO"/>
 	</typeAliases>
 
 </configuration>

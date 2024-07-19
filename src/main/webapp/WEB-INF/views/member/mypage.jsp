@@ -20,6 +20,15 @@
 
 <div class="container">
 
+	<div>
+		<c:if test="${not empty member.memberFileDTO}">
+		<img alt="" src="/resources/upload/members/${member.memberFileDTO.fileName}">
+		</c:if>
+		<c:if test="${empty member.memberFileDTO}">
+		<img alt="" src="/resources/images/default.png/">
+		</c:if>
+	</div>
+
 
   <div class="col-12">
     <label for="inputID" class="form-label">ID</label>

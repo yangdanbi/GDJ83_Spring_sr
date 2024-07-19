@@ -36,4 +36,8 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE + "detail", memberDTO);
 	}
 
+	public int joinFile(MemberFileDTO memberFileDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "joinFile", memberFileDTO);
+	}
+
 }

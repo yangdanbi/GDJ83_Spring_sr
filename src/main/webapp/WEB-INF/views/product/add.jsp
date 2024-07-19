@@ -11,7 +11,28 @@
 <body style="background-image: url('/resources/images/background-img.png')">
 <c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
 
+<div class = "justify-content-center text-center mt-3 mb-3">
 
+  <h3>상품 추가 정보 입력하기</h3>
+  
+  </div>
+  
+  <div class="container">
+  <form action="/product/add" method="post">
+  <div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">상품명</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" name = "item_name">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">상품설명</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" name = "item_detail">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">이자율</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" name ="item_rate">
+  </div>
+  </div>
   <div class="col-12">
     <button type="button" class="btn btn-primary" id="add">파일추가</button>
   </div>
@@ -19,6 +40,11 @@
   <div id="result">
 
   </div>
+  <button type = "submit" class="btn btn-primary mt-3">추가하기</button>
+  </form>
+  </div>
+
+
 
 
 

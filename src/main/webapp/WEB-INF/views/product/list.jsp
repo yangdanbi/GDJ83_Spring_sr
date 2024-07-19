@@ -12,9 +12,7 @@
 
 	<c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
 </body>
-<div class="justify-content-center text-center mt-3 mb-3">
 
-	<h3>금융상품 리스트</h3>
 
 <div class = "justify-content-center text-center mt-3 mb-3">
 
