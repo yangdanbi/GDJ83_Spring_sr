@@ -1,11 +1,22 @@
 package com.sse.app.products;
 
+import java.util.List;
+
 public class ProductDTO {
 
 	private Integer item_id;
 	private String item_name;
 	private String item_detail;
 	private Double item_rate;
+	private List<ProductFileDTO> productFileDTO;
+
+	public List<ProductFileDTO> getProductFileDTO() {
+		return productFileDTO;
+	}
+
+	public void setProductFileDTO(List<ProductFileDTO> productFileDTO) {
+		this.productFileDTO = productFileDTO;
+	}
 
 	public Integer getItem_id() {
 		return item_id;

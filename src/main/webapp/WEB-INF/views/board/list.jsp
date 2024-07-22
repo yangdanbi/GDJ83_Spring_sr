@@ -55,16 +55,16 @@
 			<c:choose>
 				<c:when test="${ar.del eq 0}">
 				
-			<a href="./detail?boardNum=${ar.boardNum}">
-			<c:catch>
-			<c:forEach begin="1" end="${ar.depth}">--</c:forEach>
-			</c:catch>
-			${ar.boardTitle}
-			</a>
+				<a href="./detail?boardNum=${ar.boardNum}">
+					<c:catch>
+					<c:forEach begin="1" end="${ar.depth}">--</c:forEach>
+					</c:catch>
+					${ar.boardTitle}
+				</a>
 				</c:when>
-				<c:otherwise>
-				삭제된 글입니다
-				</c:otherwise>
+					<c:otherwise>
+					삭제된 글입니다
+					</c:otherwise>
 			</c:choose>
 			</td>
 			<td>${ar.boardWriter}</td>

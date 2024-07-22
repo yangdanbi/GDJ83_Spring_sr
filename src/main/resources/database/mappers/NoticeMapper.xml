@@ -5,9 +5,17 @@
   
    <mapper namespace="com.sse.app.boards.notices.NoticeDAO">
    
+    <select id="getNum" resultType="java.lang.Long">
+   		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+   	</select>
+   
    	<insert id="add" parameterType="NoticeDTO">
    		INSERT INTO NOTICE (BOARDNUM,BOARDWRITER,BOARDTITLE,BOARDCONTENTS) 
-		VALUES (NOTICE_SEQ.NEXTVAL,#{boardWriter},#{boardTitle},#{boardContents})
+		VALUES (#{boardNum},#{boardWriter},#{boardTitle},#{boardContents})
+   	</insert>
+   	
+   	<insert id="addFile" parameterType="NoticeFileDTO">
+   		INSERT INTO NOTICEFILES VALUES (FILES_SEQ.NEXTVAL,#{boardNum},#{fileName},#{oriName})
    	</insert>
    	
    	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
@@ -51,9 +59,32 @@
 				</where>
    	</select>
    
-   <select id="getDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
-   	SELECT * FROM NOTICE WHERE BOARDNUM = #{boardNum}
+   <select id="getDetail" resultMap="fileResult" parameterType="NoticeDTO">
+   	SELECT *
+	FROM NOTICE N
+		 LEFT OUTER JOIN
+		 NOTICEFILES NF
+		 ON N.BOARDNUM =NF.BOARDNUM
+		 WHERE N.BOARDNUM = #{boardNum}
    </select>
+   
+   <resultMap type="NoticeDTO" id="fileResult">
+   	<id column="BOARDNUM" property="boardNum"/>
+   	<result column="BOARDWRITER" property="boardWriter"/>
+    <result column="BOARDTITLE" property="boardTitle"/>
+   	<result column="CREATEDATE" property="createDate"/>
+   	<result column="UPDATEDATE" property="updateDate"/>
+   	<result column="BOARDHIT" property="boardHit"/>
+   	<result column="BOARDCONTENTS" property="boardContents"/>
+   	<result column="BOARDCATEGORY" property="boardCategory"/>
+   	<collection property="addfiles" javaType="java.util.List" ofType="BoardFileDTO">
+   		<id column="FILENUM" property="fileNum"/>
+   		<result column="FILENAME" property="fileName"/>
+   		<result column="ORINAME" property="oriName"/>
+   	</collection>
+   </resultMap>
+   
+   
    
    <update id="hit" parameterType="NoticeDTO">
    	UPDATE NOTICE SET BOARDHIT = BOARDHIT + 1 WHERE BOARDNUM = #{boardNum}

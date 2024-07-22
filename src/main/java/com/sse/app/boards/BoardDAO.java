@@ -16,6 +16,12 @@ public interface BoardDAO {
 //	list 가져오는 메서드
 	public List<BoardDTO> getList(Pager pager) throws Exception;
 
+//	글번호 가져오는 메서드
+	public Long getNum() throws Exception;
+
+//	파일 정보 db에 저장하는 메서드
+	public int addFile(BoardFileDTO boardFileDTO) throws Exception;
+
 //	글 추가 하는 메서드
 	public int add(BoardDTO boardDTO) throws Exception;
 

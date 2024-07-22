@@ -51,6 +51,21 @@
 		  <label for="exampleFormControlTextarea1" class="form-label"></label>
 		  <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="boardContents" readOnly>${dto.boardContents}</textarea>
 		</div>
+		
+		<div>
+			<c:if test="${board=='공지사항'}">
+			<c:forEach items="${dto.addfiles}" var="v">
+				<a href="/resources/upload/notice/${v.fileName}">${v.oriName}</a>
+			</c:forEach>
+			</c:if>
+			
+			<c:if test="${board=='QnA'}">
+			<c:forEach items="${dto.addfiles}" var="v">
+				<a href="/resources/upload/qna/${v.fileName}">${v.oriName}</a>
+			</c:forEach>
+			</c:if>
+		</div>
+		
 		<div align="right">
 		<c:if test="${board=='QnA'}">
 		<div class="col-8 mt-3">

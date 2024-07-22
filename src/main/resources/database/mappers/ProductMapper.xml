@@ -53,17 +53,44 @@
 
 
 <!--디테일 가져오기  -->
-   	<select id="getDetail" resultType="ProductDTO" parameterType="ProductDTO">
+   	<select id="getDetail" resultMap="productDetail" parameterType="ProductDTO">
    	
-   		SELECT * FROM ITEMS WHERE ITEM_ID= #{item_id}
+   	SELECT I.*,P.*
+		FROM ITEMS I
+	 	LEFT OUTER JOIN
+	 	PRODUCTFILES P
+	 	ON I.ITEM_ID = P.ITEM_ID
+	WHERE I.ITEM_ID=#{item_id}
    	
    	</select>
+   	
+   	<resultMap type="ProductDTO" id="productDetail">
+   		<id column="ITEM_ID" property="item_id"/>
+   		<result column="ITEM_NAME" property="item_name"/>
+   		<result column="ITEM_DETAIL" property="item_detail"/>
+   		<result column="ITEM_RATE" property="item_rate"/>
+   		<collection property="productFileDTO" javaType="java.util.List" ofType="ProductFileDTO">
+   			<id column="FILENUM" property="fileNum"/>
+   			<result column="FILENAME" property="fileName"/>
+   			<result column="ORINAME" property="oriName"/>
+   		</collection>
+   		
+   	</resultMap>
  
  <!--새상품 추가하기  -->  	
    	<insert id="addInfo" parameterType="ProductDTO">
    	
-   		INSERT INTO ITEMS VALUES (ITEMS_SEQ.NEXTVAL, #{item_name},#{item_detail},#{item_rate})
+   		INSERT INTO ITEMS VALUES (#{item_id}, #{item_name},#{item_detail},#{item_rate})
    	
+   	</insert>
+   	
+   	<select id="getNum" resultType="java.lang.Integer">
+   		SELECT ITEMS_SEQ.NEXTVAL FROM DUAL
+   	</select>
+   	
+   	
+   	<insert id="addFile" parameterType="ProductFileDTO">
+   		INSERT INTO PRODUCTFILES VALUES (FILES_SEQ.NEXTVAL,#{item_id},#{fileName},#{oriName})
    	</insert>
    	
 <!-- 특정상품 하나 삭제하기 -->

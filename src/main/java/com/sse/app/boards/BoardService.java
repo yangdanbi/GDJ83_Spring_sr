@@ -2,6 +2,10 @@ package com.sse.app.boards;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.sse.app.util.Pager;
 
 public interface BoardService {
@@ -10,7 +14,7 @@ public interface BoardService {
 	public List<BoardDTO> getList(Pager pager) throws Exception;
 
 //	글 추가 하는 메서드
-	public int add(BoardDTO boardDTO) throws Exception;
+	public int add(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception;
 
 //	글 수정 하는 메서드
 	public int update(BoardDTO boardDTO) throws Exception;

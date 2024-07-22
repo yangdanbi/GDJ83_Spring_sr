@@ -18,7 +18,7 @@
   </div>
   
   <div class="container">
-  <form action="/product/add" method="post">
+  <form action="/product/add" method="post" enctype="multipart/form-data">
   <div>
   <div class="mb-3">
     <label for="formGroupExampleInput" class="form-label">상품명</label>

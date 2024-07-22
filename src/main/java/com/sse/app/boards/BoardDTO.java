@@ -1,6 +1,7 @@
 package com.sse.app.boards;
 
 import java.sql.Date;
+import java.util.List;
 
 public class BoardDTO {
 
@@ -13,7 +14,17 @@ public class BoardDTO {
 	private String boardContents;
 	private String boardCategory;
 	private Integer del;
+	private List<BoardFileDTO> addfiles;
 
+	public List<BoardFileDTO> getAddfiles() {
+		return addfiles;
+	}
+
+	public void setAddfiles(List<BoardFileDTO> addfiles) {
+		this.addfiles = addfiles;
+	}
+
+	//
 	public Integer getDel() {
 		if (del == null) {
 			del = 0;
@@ -25,6 +36,7 @@ public class BoardDTO {
 		this.del = del;
 	}
 
+//
 	public Long getBoardNum() {
 		return boardNum;
 	}
@@ -65,6 +77,7 @@ public class BoardDTO {
 		this.updateDate = updateDate;
 	}
 
+//
 	public Long getBoardHit() {
 		return boardHit;
 	}
@@ -73,6 +86,7 @@ public class BoardDTO {
 		this.boardHit = boardHit;
 	}
 
+//
 	public String getBoardContents() {
 		return boardContents;
 	}

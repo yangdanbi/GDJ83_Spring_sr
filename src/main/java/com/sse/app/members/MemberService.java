@@ -1,18 +1,14 @@
 package com.sse.app.members;
 
-import java.io.File;
-import java.util.Calendar;
-import java.util.UUID;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sse.app.accounts.AccountDAO;
+import com.sse.app.files.FileManager;
 
 @Service
 public class MemberService {
@@ -21,6 +17,8 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	@Autowired
 	private AccountDAO accountDAO;
+	@Autowired
+	private FileManager fileManager;
 
 	private String name = "members";
 
@@ -36,37 +34,10 @@ public class MemberService {
 
 		ServletContext servletContext = session.getServletContext();
 
-//		1. 어디에 저장할 것인가(운영체제 기준으로 설명해줘야함)
 		String path = servletContext.getRealPath("resources/upload/members");
-
 		System.out.println(path);
 
-//		그 저장경로가 없으면 만들어라
-		File file = new File(path);
-		if (!file.exists()) {
-			file.mkdir();
-		}
-
-//		2. 파일명을 뭐로 할 것인가(중복 없는 파일명) -> 시간 활용 or UUID
-		Calendar calendar = Calendar.getInstance(); // 현재 날짜를 가져오는거
-		long n = calendar.getTimeInMillis(); // 현재 날짜를 밀리세컨즈로 변환하는거
-//		- 이 숫자 파일명에 파일의 확장자 붙여주기
-		String fileName = files.getOriginalFilename();// 가져온 파일의 진짜 이름(ex ~~.jpg)
-		fileName = n + "_" + files.getOriginalFilename();
-
-		fileName = UUID.randomUUID().toString() + "_" + files.getOriginalFilename();
-		System.out.println(fileName);
-
-//		3. 하드디스크(HDD)에 파일을 저장(0과 1로 쪼개서)
-//		파일 정보 준비
-		file = new File(file, fileName);
-
-//		저장방법이 2개 있음
-//		 1) MultipartFile
-//		files.transferTo(file);
-
-//		 2)FileCopyUtils 라이브러리 활용
-		FileCopyUtils.copy(files.getBytes(), file);
+		String fileName = fileManager.fileSave(files, path);
 
 		MemberFileDTO memberFileDTO = new MemberFileDTO();
 		memberFileDTO.setMember_id(memberDTO.getMember_id());

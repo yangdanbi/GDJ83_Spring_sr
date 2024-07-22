@@ -2,11 +2,14 @@ package com.sse.app.products;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sse.app.util.Pager;
 
@@ -44,10 +47,11 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String addInfo2(Model model, ProductDTO productDTO) throws Exception {
+	public String addInfo2(Model model, ProductDTO productDTO, MultipartFile[] files, HttpSession session)
+			throws Exception {
 		System.out.println("제출");
 
-		int num = productService.addInfo(productDTO);
+		int num = productService.addInfo(productDTO, files, session);
 		String url = "";
 
 		if (num > 0) {
