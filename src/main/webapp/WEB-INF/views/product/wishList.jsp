@@ -28,18 +28,21 @@
 		<thead>
 
 			<tr>
+				<td>
+				<input type="checkbox">
+				</td>
 				<td>상품명</td>
 				<td>이자율</td>
+				<td>삭제</td>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${list}" var="ar">
 				<tr>
-
-
+					<td><input type="checkbox"></td>
 					<td>${ar.item_name}</td>
 					<td>${ar.item_rate}</td>
-
+					<td><button type="button" class="btn btn-primary wishDelete" data-wish-delete="${ar.item_id}">X</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -108,4 +111,5 @@
 	</form>
 </div> --%>
 <c:import url="/WEB-INF/views/sample/footer.jsp"></c:import>
+<script src="/resources/js/product/wishDelete.js"></script>
 </html>
