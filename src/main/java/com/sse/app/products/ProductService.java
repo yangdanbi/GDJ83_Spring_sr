@@ -1,6 +1,8 @@
 package com.sse.app.products;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sse.app.files.FileManager;
+import com.sse.app.members.MemberDTO;
 import com.sse.app.util.Pager;
 
 @Service
@@ -81,6 +84,20 @@ public class ProductService {
 
 		return productDAO.updateInfo(productDTO);
 
+	}
+
+	public int addWish(Integer item_id, String member_id) throws Exception {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("item_id", item_id);
+		map.put("member_id", member_id);
+
+		return productDAO.addWish(map);
+
+	}
+
+	public List<ProductDTO> wishList(MemberDTO memberDTO) throws Exception {
+		return productDAO.wishList(memberDTO);
 	}
 
 }

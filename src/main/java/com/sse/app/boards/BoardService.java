@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sse.app.files.FileDTO;
 import com.sse.app.util.Pager;
 
 public interface BoardService {
@@ -24,5 +25,8 @@ public interface BoardService {
 
 //	글 하나 읽어오는 메서드
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;
+
+//	파일 다운로드 하는 메서드
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception;
 
 }

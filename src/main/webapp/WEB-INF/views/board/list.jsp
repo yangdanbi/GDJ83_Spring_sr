@@ -13,7 +13,7 @@
 <c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
 </body>
 <c:choose>
-	<c:when test="${board=='QnA'}">
+	<c:when test="${board=='qna'}">
 	<div class = "justify-content-center text-center mt-3 mb-3">
 		<h3>QnA</h3>
 	</div>

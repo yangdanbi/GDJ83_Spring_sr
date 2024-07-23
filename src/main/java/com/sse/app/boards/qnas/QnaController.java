@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sse.app.boards.BoardDTO;
+import com.sse.app.files.FileDTO;
 import com.sse.app.members.MemberDTO;
 import com.sse.app.util.Pager;
 
@@ -27,7 +28,7 @@ public class QnaController {
 
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "QnA";
+		return "qna";
 	}
 
 	@GetMapping("list")
@@ -92,6 +93,13 @@ public class QnaController {
 	public String delete(QnaDTO qnaDTO) throws Exception {
 		int result = qnaService.delete(qnaDTO);
 		return "redirect:./list";
+	}
+
+	@GetMapping("fileDown")
+	public String fileDown(FileDTO fileDTO, Model model) throws Exception {
+		fileDTO = qnaService.fileDetail(fileDTO);
+		model.addAttribute("file", fileDTO);
+		return "fileDown";
 	}
 
 }

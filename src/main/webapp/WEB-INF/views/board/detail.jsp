@@ -53,21 +53,21 @@
 		</div>
 		
 		<div>
-			<c:if test="${board=='공지사항'}">
+			<c:if test="${board=='notice'}">
 			<c:forEach items="${dto.addfiles}" var="v">
-				<a href="/resources/upload/notice/${v.fileName}">${v.oriName}</a>
+				<a href="./fileDown?fileNum=${v.fileNum}">${v.oriName}</a>
 			</c:forEach>
 			</c:if>
 			
-			<c:if test="${board=='QnA'}">
+			<c:if test="${board=='qna'}">
 			<c:forEach items="${dto.addfiles}" var="v">
-				<a href="/resources/upload/qna/${v.fileName}">${v.oriName}</a>
+				<a href="./fileDown?fileNum=${v.fileNum}">${v.oriName}</a>
 			</c:forEach>
 			</c:if>
 		</div>
 		
 		<div align="right">
-		<c:if test="${board=='QnA'}">
+		<c:if test="${board=='qna'}">
 		<div class="col-8 mt-3">
 		  <a href="./reply?boardNum=${dto.boardNum}"><button type="submit" class="btn btn-primary">답글달기</button></a>
 		  </div>

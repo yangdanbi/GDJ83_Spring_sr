@@ -77,10 +77,22 @@
 	<a href="./delete?item_id=${dto.item_id}"><button class="btn btn-primary">삭제하기</button></a>
 	
 </div>
+
+<div class="mb-2">
+
+	<button type="button" class="btn btn-primary" id="addWish" data-product-id="${dto.item_id}">관심목록추가</button>
+	
 </div>
+
+</div>
+</div>
+
+<div id="wishResult">
+
 </div>
 
 
 <c:import url="/WEB-INF/views/sample/footer.jsp"></c:import>
+<script src="/resources/js/product/wish.js"></script>
 </body>
 </html>

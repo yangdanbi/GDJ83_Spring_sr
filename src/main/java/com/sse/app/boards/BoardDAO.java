@@ -2,6 +2,7 @@ package com.sse.app.boards;
 
 import java.util.List;
 
+import com.sse.app.files.FileDTO;
 import com.sse.app.util.Pager;
 
 public interface BoardDAO {
@@ -37,4 +38,6 @@ public interface BoardDAO {
 //	조회수 증가시키는 메서드
 	public int hit(BoardDTO boardDTO) throws Exception;
 
+//	파일 다운로드 하는 메서드
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception;
 }
