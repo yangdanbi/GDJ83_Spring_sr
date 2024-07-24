@@ -12,6 +12,7 @@ const mail = document.getElementById("inputMail");
 
 const pwerror1=document.getElementById("pwerror1");
 const pwerror2=document.getElementById("pwerror2");
+const idError=document.getElementById("idError");
 
 const frm = document.getElementById("frm");
 

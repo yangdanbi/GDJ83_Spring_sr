@@ -46,12 +46,16 @@ public class MemberController {
 	}
 
 	@GetMapping("idCheck")
-	public void idCheck(MemberDTO memberDTO, Model model) {
-		memberDTO = memberService.idCheck(memberDTO);
-		if (memberDTO != null) {
-
+	public String idCheck(MemberDTO memberDTO, Model model) {
+		int result = 0;
+		MemberDTO mDTO = memberService.idCheck(memberDTO);
+		if (mDTO != null) {
+			result = 1;
+			model.addAttribute("msg", result);
+		} else {
+			model.addAttribute("msg", result);
 		}
-
+		return "/commons/result";
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
