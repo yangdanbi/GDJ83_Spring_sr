@@ -18,9 +18,10 @@
   <form class="row g-3" action="/member/join" method="post" ID="frm" enctype="multipart/form-data">
   
     <div>
+      <div id="idError"></div>
       <label for="inputID" class="form-label">ID</label>
       <input type="text" class="form-control" id="inputId" name="member_id">
-       <div id="pwerror1"></div>
+     
     </div>
     <div class="col-md-6">
       <label for="inputPassword" class="form-label">Password</label>
