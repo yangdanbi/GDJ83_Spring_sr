@@ -21,7 +21,13 @@
 </div>
 
 <div class="container mt-5 justify-content-center text-center">
+	<div class="container justify-content-center text-center mb-5">
 
+		
+		<div style="float: left">
+			<button type="button" class="btn btn-primary" data-wish-delete="${ar.item_id}" id="del_btn">전체삭제</button>
+		</div>
+	</div>
 
 	<table class="table table-hover">
 
@@ -29,7 +35,7 @@
 
 			<tr>
 				<td>
-				<input type="checkbox">
+				<input type="checkbox" id="selectAll" onclick="info()">
 				</td>
 				<td>상품명</td>
 				<td>이자율</td>
@@ -37,12 +43,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${list}" var="ar">
-				<tr>
-					<td><input type="checkbox"></td>
+			<c:forEach items="${list}" var="ar" varStatus ="i">
+				<!--  -->
+				<tr id="w${i.index}" >
+					<td><input type="checkbox" id="select" class="ch" data-del-id="w${i.index}" data-wish-id="${ar.item_id}" ></td>
 					<td>${ar.item_name}</td>
 					<td>${ar.item_rate}</td>
-					<td><button type="button" class="btn btn-primary wishDelete" data-wish-delete="${ar.item_id}">X</button></td>
+					<td><button type="button" class="btn btn-primary wishDelete"  data-del-id="w${i.index}"  data-wish-id="${ar.item_id}">X</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>

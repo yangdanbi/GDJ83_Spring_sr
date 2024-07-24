@@ -10,6 +10,12 @@
    		INSERT INTO MEMBERS VALUES(#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_mail})
    	
    	</insert>
+   	
+   	<select id="idCheck" parameterType="MemberDTO" >
+	SELECT * 
+	FROM MEMBERS
+	WHERE MEMBER_ID = #{member_id}
+   	</select>
    
    <select id="login" parameterType="MemberDTO" resultType="MemberDTO">
    	

@@ -119,5 +119,16 @@
 	SELECT ITEM_ID FROM WISHLIST WHERE MEMBER_ID=#{member_id})
 	</select>
 	
+	<delete id="deleteWishList" parameterType="java.util.Map">
+	DELETE WISHLIST 
+	WHERE MEMBER_ID = 
+				#{member_id} 
+				AND 
+				ITEM_ID IN
+				<foreach collection="ids" item="item" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			
+	</delete>
 
    </mapper>

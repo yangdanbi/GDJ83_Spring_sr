@@ -119,4 +119,19 @@ public class ProductController {
 		List<ProductDTO> ar = productService.wishList(memberDTO);
 		model.addAttribute("list", ar);
 	}
+
+	@GetMapping("deleteWishList")
+	public String deletewishList(Integer[] item_id, Model model, HttpSession session) throws Exception {
+		for (Integer id : item_id) {
+
+			System.out.println("id : " + id);
+		}
+
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		int result = productService.deleteWishList(item_id, memberDTO.getMember_id());
+		model.addAttribute("msg", result);
+
+		return "commons/result";
+
+	}
 }

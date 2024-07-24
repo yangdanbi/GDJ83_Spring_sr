@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sse.app.boards.BoardDAO;
 import com.sse.app.boards.BoardDTO;
 import com.sse.app.boards.BoardService;
+import com.sse.app.files.FileDTO;
 import com.sse.app.files.FileManager;
 import com.sse.app.util.Pager;
 
@@ -78,5 +79,9 @@ public class NoticeService implements BoardService {
 
 	public int delete(BoardDTO boardDTO) throws Exception {
 		return boardDAO.delete(boardDTO);
+	}
+
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception {
+		return boardDAO.fileDetail(fileDTO);
 	}
 }

@@ -49,6 +49,15 @@ public class MemberService {
 
 	}
 
+	public MemberDTO idCheck(MemberDTO memberDTO) {
+		MemberDTO result = memberDAO.idCheck(memberDTO);
+		if (result != null) {
+			return result;
+		}
+		return null;
+
+	}
+
 	public MemberDTO login(MemberDTO memberDTO) throws Exception {
 
 		MemberDTO result = memberDAO.login(memberDTO);
