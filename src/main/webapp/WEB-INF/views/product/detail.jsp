@@ -50,8 +50,55 @@
 		<a href="/resources/upload/products/${f.fileName}">${f.oriName}</a>
 	</c:forEach>
 </div>
+<div>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal">
+		댓글 입력
+  	</button>
+
+		<!-- 댓글 모달-->
+		<div>
+			<!-- Modal -->
+			<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">comment</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="mb-3">
+							<textarea class="form-control" id="commentContents" rows="3"></textarea>
+						  </div>
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="commentClose">Close</button>
+					<button type="button" class="btn btn-primary" id="commentButton" data-id="${dto.item_id}">Save</button>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+  
+	<!-- <textarea id="commentContents">
+
+	</textarea>
+
+	<button id="commentButton">댓글</button> -->
+
+	<!-- 댓글 목록-->
+	<div id="commentList">
+		
+
+	</div>
+
+
+
+ </div>
 
 </div>
+
+
 
 <div class="container">
 
@@ -94,5 +141,6 @@
 
 <c:import url="/WEB-INF/views/sample/footer.jsp"></c:import>
 <script src="/resources/js/product/wish.js"></script>
+<script src="/resources/js/commons/comment.js"></script>
 </body>
 </html>

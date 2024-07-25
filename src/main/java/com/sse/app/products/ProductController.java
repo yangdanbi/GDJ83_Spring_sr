@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sse.app.members.MemberDTO;
 import com.sse.app.util.Pager;
+import com.sse.app.util.ProductCommentPager;
 
 @Controller
 @RequestMapping("/product/*")
@@ -134,4 +136,36 @@ public class ProductController {
 		return "commons/result";
 
 	}
+
+	@PostMapping("commentAdd")
+	public String commentAdd(HttpSession session, ProductCommentDTO productCommentDTO, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		System.out.println("getMember_id " + memberDTO.getMember_id());
+
+		productCommentDTO.setBoardWriter(memberDTO.getMember_id());
+		int result = productService.commentAdd(productCommentDTO);
+		model.addAttribute("msg", result);
+		return "commons/result";
+
+		// System.out.println("contents : " + contents);
+
+	}
+
+	@GetMapping("commentList")
+	public void commentList(ProductCommentPager productCommentPager, Model model) throws Exception {
+		List<ProductCommentDTO> list = productService.commentList(productCommentPager);
+		model.addAttribute("list", list);
+		model.addAttribute("pager", productCommentPager);
+	}
+
+	@PostMapping("commentDelete")
+	public String commentDelete(ProductCommentDTO productCommentDTO, Model model) throws Exception {
+		int result = productService.commentDelete(productCommentDTO);
+
+		model.addAttribute("msg", result);
+
+		return "commons/result";
+
+	}
+
 }

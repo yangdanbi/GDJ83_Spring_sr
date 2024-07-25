@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sse.app.files.FileManager;
 import com.sse.app.members.MemberDTO;
 import com.sse.app.util.Pager;
+import com.sse.app.util.ProductCommentPager;
 
 @Service
 public class ProductService {
@@ -23,6 +24,22 @@ public class ProductService {
 	@Autowired
 	private FileManager fileManager;
 
+	public int commentDelete(ProductCommentDTO productCommentDTO) throws Exception {
+		return productDAO.commentDelete(productCommentDTO);
+	}
+
+	public List<ProductCommentDTO> commentList(ProductCommentPager productCommentPager) throws Exception {
+
+		productCommentPager.makeRow();
+
+		Long t = productDAO.commentTotalCount(productCommentPager);
+
+		productCommentPager.makeNum(productDAO.commentTotalCount(productCommentPager));
+
+		return productDAO.commentList(productCommentPager);
+
+	}
+
 	public List<ProductDTO> getList(Pager pager) throws Exception {
 
 		pager.makeRow();
@@ -31,6 +48,12 @@ public class ProductService {
 		pager.makeNum(totalCount);
 
 		return productDAO.getList(pager);
+
+	}
+
+	public int commentAdd(ProductCommentDTO productCommentDTO) throws Exception {
+
+		return productDAO.commentAdd(productCommentDTO);
 
 	}
 

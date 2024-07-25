@@ -18,6 +18,19 @@ const frm = document.getElementById("frm");
 
 const pwcheck = document.getElementById("passwordCheck");
 
+id.addEventListener("blur",function(){
+    idError.innerHTML=""
+   
+    if(pw.value.length<8){
+        pw.value="";
+        pwerror1.innerHTML="비밀번호를 8글자 이상 입력하세요"
+    }else{
+        if(pw.value!=pwcheck.value){
+            pwcheck.value="";
+            pwerror2.innerHTML="비밀번호가 일치하지 않습니다. 다시 입력하세요"
+        }  
+    }
+})
 
 btn.addEventListener("click",function(){
     let finish =0;

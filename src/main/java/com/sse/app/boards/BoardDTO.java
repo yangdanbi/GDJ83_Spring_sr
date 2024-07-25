@@ -3,55 +3,18 @@ package com.sse.app.boards;
 import java.sql.Date;
 import java.util.List;
 
-public class BoardDTO {
+public class BoardDTO extends CommentDTO {
 
-	private Long boardNum;
-	private String boardWriter;
+//	private Long boardNum;
+//	private String boardWriter;
 	private String boardTitle;
-	private Date createDate;
+//	private Date createDate;
 	private Date updateDate;
 	private Long boardHit;
-	private String boardContents;
+//	private String boardContents;
 	private String boardCategory;
 	private Integer del;
 	private List<BoardFileDTO> addfiles;
-
-	public List<BoardFileDTO> getAddfiles() {
-		return addfiles;
-	}
-
-	public void setAddfiles(List<BoardFileDTO> addfiles) {
-		this.addfiles = addfiles;
-	}
-
-	//
-	public Integer getDel() {
-		if (del == null) {
-			del = 0;
-		}
-		return del;
-	}
-
-	public void setDel(Integer del) {
-		this.del = del;
-	}
-
-//
-	public Long getBoardNum() {
-		return boardNum;
-	}
-
-	public void setBoardNum(Long boardNum) {
-		this.boardNum = boardNum;
-	}
-
-	public String getBoardWriter() {
-		return boardWriter;
-	}
-
-	public void setBoardWriter(String boardWriter) {
-		this.boardWriter = boardWriter;
-	}
 
 	public String getBoardTitle() {
 		return boardTitle;
@@ -59,14 +22,6 @@ public class BoardDTO {
 
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
 	}
 
 	public Date getUpdateDate() {
@@ -77,7 +32,6 @@ public class BoardDTO {
 		this.updateDate = updateDate;
 	}
 
-//
 	public Long getBoardHit() {
 		return boardHit;
 	}
@@ -86,21 +40,28 @@ public class BoardDTO {
 		this.boardHit = boardHit;
 	}
 
-//
-	public String getBoardContents() {
-		return boardContents;
-	}
-
-	public void setBoardContents(String boardContents) {
-		this.boardContents = boardContents;
-	}
-
 	public String getBoardCategory() {
 		return boardCategory;
 	}
 
 	public void setBoardCategory(String boardCategory) {
 		this.boardCategory = boardCategory;
+	}
+
+	public Integer getDel() {
+		return del;
+	}
+
+	public void setDel(Integer del) {
+		this.del = del;
+	}
+
+	public List<BoardFileDTO> getAddfiles() {
+		return addfiles;
+	}
+
+	public void setAddfiles(List<BoardFileDTO> addfiles) {
+		this.addfiles = addfiles;
 	}
 
 }

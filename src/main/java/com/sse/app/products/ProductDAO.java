@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sse.app.members.MemberDTO;
 import com.sse.app.util.Pager;
+import com.sse.app.util.ProductCommentPager;
 
 @Repository
 public class ProductDAO {
@@ -17,6 +18,27 @@ public class ProductDAO {
 	private SqlSession sqlSession;
 
 	private final String NAMESPACE = "com.sse.app.products.ProductDAO.";
+
+	public int commentDelete(ProductCommentDTO productCommentDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE + "commentDelete", productCommentDTO);
+	}
+
+	public Long commentTotalCount(ProductCommentPager productConmmentPager) throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE + "commentTotalCount", productConmmentPager);
+
+	}
+
+	public List<ProductCommentDTO> commentList(ProductCommentPager productConmmentPager) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "commentList", productConmmentPager);
+
+	}
+
+	public int commentAdd(ProductCommentDTO productCommentDTO) throws Exception {
+
+		return sqlSession.insert(NAMESPACE + "commentAdd", productCommentDTO);
+
+	}
 
 	public List<ProductDTO> getList(Pager pager) throws Exception {
 

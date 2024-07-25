@@ -20,7 +20,7 @@
 </div>
 
 <div class="container">
-<form action="/member/login" method="post">
+<form action="/member/login" method="post" enctype="application/x-www-form-urlencoded">
 	<div class="mb-3">
 		<label for="formGroupExampleInput" class="form-label">ID</label> 
 		<input type="text" class="form-control" id="formGroupExampleInput" name="member_id" value="${id}">
