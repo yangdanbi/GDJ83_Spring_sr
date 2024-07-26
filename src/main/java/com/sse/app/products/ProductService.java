@@ -24,6 +24,10 @@ public class ProductService {
 	@Autowired
 	private FileManager fileManager;
 
+	public int commentUpdate(ProductCommentDTO productCommentDTO) throws Exception {
+		return productDAO.commentUpdate(productCommentDTO);
+	}
+
 	public int commentDelete(ProductCommentDTO productCommentDTO) throws Exception {
 		return productDAO.commentDelete(productCommentDTO);
 	}

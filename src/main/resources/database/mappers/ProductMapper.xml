@@ -5,7 +5,15 @@
   
   
    <mapper namespace="com.sse.app.products.ProductDAO">
-  	 <select id="commentTotalCount" resultType="java.lang.Long" parameterType="ProductCommentPager">
+   
+   	<update id="commentUpdate"  parameterType="ProductCommentDTO" >
+	   	UPDATE COMMENTS 
+		SET 
+			BOARDCONTENTS = #{boardContents}
+		WHERE BOARDNUM = #{boardNum} 
+   </update>
+   
+   	 <select id="commentTotalCount" resultType="java.lang.Long" parameterType="ProductCommentPager">
   	 
   	 	SELECT COUNT(BOARDNUM) FROM COMMENTS
   	 	WHERE ITEM_ID= #{item_id}

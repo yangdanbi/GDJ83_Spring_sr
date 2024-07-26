@@ -168,4 +168,15 @@ public class ProductController {
 
 	}
 
+	@PostMapping("commentUpdate")
+	public String commentUpdate(ProductCommentDTO productCommentDTO, Model model,
+			ProductCommentPager productCommentPager) throws Exception {
+		int result = productService.commentUpdate(productCommentDTO);
+		model.addAttribute("msg", result);
+		return "commons/result";
+
+		// model.addAttribute("pager", productCommentPager);
+
+	}
+
 }

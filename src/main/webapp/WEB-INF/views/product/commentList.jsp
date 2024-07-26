@@ -25,13 +25,20 @@
 		<tbody>
 			<c:forEach items="${list}" var="ar" varStatus ="i">
 				<tr>
-					<td>${ar.boardNum}</td>
-					<td>${ar.boardContents}</td>
+					<td >${ar.boardNum}</td>
+					<td id="con${i.index}">${ar.boardContents}</td>
 					<td>${ar.boardWriter}</td>
 					<td>
 						<c:if test="${ar.boardWriter eq member.member_id}">
 							<button type="button" class= "btn btn-primary dels" data-del-id="${ar.boardNum}" >
 								X
+							</button>
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${ar.boardWriter eq member.member_id}">
+							<button type="button" class= "btn btn-primary ups" data-del-id="${ar.boardNum}" data-update-con="con${i.index}"  data-bs-toggle="modal" data-bs-target="#commentModal">
+								수정
 							</button>
 						</c:if>
 					</td>

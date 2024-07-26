@@ -52,7 +52,7 @@
 </div>
 <div>
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal">
+	<button type="button" id="openModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal">
 		댓글 입력
   	</button>
 
