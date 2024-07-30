@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,11 +53,11 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String addInfo2(Model model, ProductDTO productDTO, MultipartFile[] files, HttpSession session)
+	public String addInfo2(Model model, ProductDTO productDTO, MultipartFile[] attach, HttpSession session)
 			throws Exception {
 		System.out.println("제출");
 
-		int num = productService.addInfo(productDTO, files, session);
+		int num = productService.addInfo(productDTO, attach, session);
 		String url = "";
 
 		if (num > 0) {
@@ -81,6 +83,24 @@ public class ProductController {
 		return url;
 
 	}
+	// 예외를 최종적으로 처리
+
+	// 세부적으로 컨트롤 하고싶을때 예외종류를 다르게 해서 메세지 보기
+	@ExceptionHandler(NullPointerException.class)
+	public void exceptionHandler() {
+
+	}
+
+	@ExceptionHandler(Exception.class)
+	public void exceptionHandler2() {
+
+	}
+
+	// Exception 에서도 처리하지 못하면 Throwable에서 처리(Throwable는 최상위)
+	@ExceptionHandler(Throwable.class)
+	public void exceptionHandler3() {
+
+	}
 
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public void updateInfo(Model model, ProductDTO productDTO) throws Exception {
@@ -92,7 +112,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String updateInfo2(Model model, ProductDTO productDTO) {
+	public String updateInfo2(@ModelAttribute ProductDTO productDTO, Model model) {
 
 		int num = productService.updateInfo(productDTO);
 		String url = "";

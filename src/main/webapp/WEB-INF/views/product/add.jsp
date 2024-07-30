@@ -7,10 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/WEB-INF/views/sample/header_css.jsp"></c:import>
+
 </head>
 <body style="background-image: url('/resources/images/background-img.png')">
+<!-- summer가 jquery 를 이용해서 만든거라 jquery 먼저 임포트 시킴 -->
 <c:import url="/WEB-INF/views/sample/topheader.jsp"></c:import>
-
+<c:import url="/WEB-INF/views/sample/summer.jsp"></c:import>
 <div class = "justify-content-center text-center mt-3 mb-3">
 
   <h3>상품 추가 정보 입력하기</h3>
@@ -26,7 +28,8 @@
   </div>
   <div class="mb-3">
     <label for="formGroupExampleInput" class="form-label">상품설명</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" name = "item_detail">
+    <textarea rows="" cols="" id="item_detail" name = "item_detail" class="form-control" ></textarea>
+  
   </div>
   <div class="mb-3">
     <label for="formGroupExampleInput" class="form-label">이자율</label>
@@ -52,8 +55,10 @@
 </body>
 <script type="text/javascript" src="/resources/js/commons/files.js"></script>
 
+
 <script>
     setMax(5);
+    $("#item_detail").summernote();
 </script>
 
 </html>

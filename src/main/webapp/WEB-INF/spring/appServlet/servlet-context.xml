@@ -9,6 +9,36 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
+	<beans:bean class="com.sse.app.interceptors.WriterInterceptor" name="writerInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+		<!--어떤 url이 왔을때  -->
+		<!-- mapping -> 어느객체를 할 것인지/ 이 순서대로 작성해야함 -->
+			<mapping path="/product/*"/>
+			<!--제외하고 싶은것 여러개 제외 가능 -->
+			<exclude-mapping path="/product/add"/>
+			<beans:ref bean="testInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/product/*"/>
+			<mapping path="notice/*"/>
+			<exclude-mapping path="/product/list"/>
+			<exclude-mapping path="/product/detail"/>
+			<exclude-mapping path="/notice/list"/>
+			<exclude-mapping path="/notice/detail"/>
+			<!--어노테이션 없이 여기서 객체를 만들어서 쓰겠다 -->
+			<beans:bean class="com.sse.app.interceptors.AdminInterceptor"></beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/update"/>
+			<beans:ref bean="writerInterceptor"/>
+		
+		</interceptor>
+	
+	</interceptors>
+	
+	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
