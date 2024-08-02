@@ -1,6 +1,8 @@
 package com.sse.app.boards.qnas;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,6 +32,26 @@ public class QnaController {
 	@ModelAttribute("board")
 	public String getBoard() {
 		return "qna";
+	}
+
+	@PostMapping("uploadContentImage")
+	@ResponseBody // 응답 데이터를 jsp로 찾아가지않고 json 형식으로 만들어서 내보냄
+	public Map<String, String> uploadContentImage(MultipartFile upload, Model model) throws Exception {
+		// service로 보내서 파일을 하드디스크에 저장
+		// 저장된 이름을 디비엔 저장 안함
+		// 첨부파일로 저장하는게 아니라 컨텐트 내용으로 한번에 저장됨
+		// 경로와 저장된 파일명을 리턴으로 받음
+		System.out.println(upload.getOriginalFilename());
+		System.out.println(upload.getSize());
+		String path = "/resources/images/index/dog1.jpg";
+//		path = "{\"url\":" + path;
+//		
+//		model.addAttribute("msg", path);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("url", path);
+
+		return map;
+
 	}
 
 	@GetMapping("list")
